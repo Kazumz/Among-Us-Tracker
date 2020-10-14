@@ -1,25 +1,24 @@
 import React from 'react';
-import logo from '../logo.svg';
+import i18next from 'i18next';
 
 import '../styles/Main.scss';
 
+import Section from '../components/Section';
+
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="app">
+      <header className="app__header">
+        <h1>{i18next.t('header.title')}</h1>
       </header>
+
+      <main className="app__body">
+        <Section />
+      </main>
+
+      <footer className="app__footer">
+        {i18next.t('footer.createdBy')}
+      </footer>
     </div>
   );
 }

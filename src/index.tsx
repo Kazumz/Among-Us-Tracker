@@ -7,6 +7,9 @@ import './index.css';
 import App from './views/App';
 import * as serviceWorker from './serviceWorker';
 import store from './store/store';
+import initialise from "./internationalisation/i18n";
+
+initialise();
 
 ReactDOM.render(
   <Provider store={store}>
