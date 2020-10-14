@@ -1,0 +1,13 @@
+.player {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 5rem;
+    min-height: 3rem;
+    border: 1.5px solid $PureWhite;
+    border-radius: $StandardBorderRadius;
+
+    & > .player__name {
+        font-weight: bold;
+    }
+}
