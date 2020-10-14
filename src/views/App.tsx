@@ -3,7 +3,11 @@ import i18next from 'i18next';
 
 import '../styles/Main.scss';
 
-import Section from '../components/Section';
+import Innocent from '../components/Innocent';
+import Suspicious from '../components/Suspicious';
+import Impostor from '../components/Impostor';
+import Dead from '../components/Dead';
+import Players from '../components/Players';
 
 const App: React.FC = () => {
   return (
@@ -13,7 +17,15 @@ const App: React.FC = () => {
       </header>
 
       <main className="app__body">
-        <Section />
+        <Impostor />
+
+        <Suspicious />
+
+        <Innocent />
+
+        <Dead />
+
+        <Players />
       </main>
 
       <footer className="app__footer">
