@@ -8,4 +8,8 @@ import IState from './state';
 
 const store: Store<IState> = createStore(rootReducer, composeWithDevTools());
 
+export function getState(): IState {
+    return store.getState();
+}
+
 export default store;

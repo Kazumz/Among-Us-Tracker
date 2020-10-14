@@ -1,8 +1,7 @@
 .app {
   height: 100vh;
-
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto 1fr;
   max-width: 1280px;
   background: $LayoutBackgroundBrush;
   margin: 0 auto;
@@ -12,10 +11,10 @@
   }
 
   & > .app__body {
+    display: grid;
+    overflow-y: auto;
+    overflow-x: hidden;
     padding: 2.5rem;
-  }
-
-  & > .app__footer {
-    padding: 0.5rem;
+    padding-top: 0;
   }
 }

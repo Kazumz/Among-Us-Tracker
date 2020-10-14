@@ -8,6 +8,7 @@ import Suspicious from '../components/Suspicious';
 import Impostor from '../components/Impostor';
 import Dead from '../components/Dead';
 import Players from '../components/Players';
+import Add from '../components/Add';
 
 const App: React.FC = () => {
   return (
@@ -26,11 +27,9 @@ const App: React.FC = () => {
         <Dead />
 
         <Players />
-      </main>
 
-      <footer className="app__footer">
-        {i18next.t('footer.createdBy')}
-      </footer>
+        <Add />
+      </main>
     </div>
   );
 }
