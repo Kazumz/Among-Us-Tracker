@@ -1,4 +1,5 @@
-import Category from '../../enums/category';
+import Position from '../../enums/Position';
+import Colour from '../../enums/Colour';
 import IPlayer from '../../interfaces/player';
 
 enum ActionTypes {
@@ -8,6 +9,7 @@ enum ActionTypes {
 interface ICreatePlayerAction {
     type: ActionTypes.CREATE_PLAYER;
     name: string;
+    colour: Colour;
 }
 
 // Action Combinator
@@ -20,10 +22,11 @@ export interface IPlayerState {
 
 // Action Creators
 export const actionCreators = {
-    createPlayer(name: string): ICreatePlayerAction {
+    createPlayer(name: string, colour: Colour): ICreatePlayerAction {
         return {
             type: ActionTypes.CREATE_PLAYER,
-            name: name
+            name: name,
+            colour: colour,
         }
     }
 }
@@ -32,10 +35,11 @@ export const actionCreators = {
 function createPlayerAction(state: IPlayerState, action: ICreatePlayerAction): IPlayerState {
     const newPlayer: IPlayer = {
         name: action.name,
-        category: Category.Unknown
+        position: Position.Unknown,
+        color: action.colour
     };
 
-    if (!state.players.some(x => x.name === newPlayer.name)) {
+    if (!state.players.some(x => x.name === newPlayer.name || x.color === newPlayer.color)) {
         return {
             ...state,
             players: [...state.players, newPlayer]

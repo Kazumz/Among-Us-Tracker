@@ -2,10 +2,10 @@ import React from 'react';
 import i18next from 'i18next';
 
 import Section from './Section';
-import { GetPlayers } from '../store/bundles/player-selectors';
+import { GetUnknownPlayers } from '../store/bundles/player-selectors';
 
 const Players: React.FC = () => {
-    const players = GetPlayers();
+    const players = GetUnknownPlayers();
 
     return (
         <div className="players">

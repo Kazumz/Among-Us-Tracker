@@ -1,4 +1,4 @@
-enum Category {
+enum Position {
     Impostor,
     Suspicious,
     Innocent,
@@ -6,4 +6,4 @@ enum Category {
     Unknown
 };
 
-export default Category;
+export default Position;
