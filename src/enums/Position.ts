@@ -1,9 +1,9 @@
 enum Position {
-    Impostor,
-    Suspicious,
-    Innocent,
-    Dead,
-    Unknown
+    Impostor = 'impostor',
+    Suspicious = 'suspicious',
+    Innocent = 'innocent',
+    Dead = 'dead',
+    Unknown = 'unknown'
 };
 
 export default Position;
