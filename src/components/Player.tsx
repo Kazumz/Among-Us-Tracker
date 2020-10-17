@@ -1,4 +1,6 @@
 import React from 'react';
+import classnames from 'classnames';
+
 import Colour from '../enums/Colour';
 import IPlayer from '../interfaces/player';
 import Black from '../assets/black_character.png'
@@ -21,8 +23,23 @@ interface IPlayerProps {
 const Player: React.FC<IPlayerProps> = ({
   player
 }) => {
+  const playerClassName: string = classnames('player', {
+    'player--black': player.color === Colour.Black,
+    'player--blue': player.color === Colour.Blue,
+    'player--brown': player.color === Colour.Brown,
+    'player--cyan': player.color === Colour.Cyan,
+    'player--green': player.color === Colour.Green,
+    'player--lime': player.color === Colour.Lime,
+    'player--orange': player.color === Colour.Orange,
+    'player--pink': player.color === Colour.Pink,
+    'player--purple': player.color === Colour.Purple,
+    'player--red': player.color === Colour.Red,
+    'player--white': player.color === Colour.White,
+    'player--yellow': player.color === Colour.Yellow,
+  });
+
   return (
-    <div className="player">
+    <div className={playerClassName}>
       {getCharacterImage(player.color)}
 
       <span className='player__name'>{player.name}</span>

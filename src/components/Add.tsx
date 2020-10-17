@@ -53,7 +53,7 @@ const Add: React.FC = () => {
                 options={new Map<number, string>([
                     [Colour.Unknown, 'Unknown'],
                     [Colour.Black, 'Black'],
-                    [Colour.Black, 'Blue'],
+                    [Colour.Blue, 'Blue'],
                     [Colour.Brown, 'Brown'],
                     [Colour.Cyan, 'Cyan'],
                     [Colour.Green, 'Green'],
