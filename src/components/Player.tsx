@@ -18,10 +18,14 @@ import Brown from '../assets/brown_character.png'
 
 interface IPlayerProps {
   player: IPlayer;
+  nextCallback: () => void;
+  prevCallback: () => void;
 }
 
 const Player: React.FC<IPlayerProps> = ({
-  player
+  player,
+  nextCallback,
+  prevCallback,
 }) => {
   const playerClassName: string = classnames('player', {
     'player--black': player.color === Colour.Black,
@@ -45,9 +49,19 @@ const Player: React.FC<IPlayerProps> = ({
       <span className='player__name'>{player.name}</span>
 
       <span className='player__nav'>
-        <button className='player__nav-previous'>Next</button>
+      <button
+          className='player__nav-previous'
+          onClick={prevCallback}
+        >
+          Up
+        </button>
 
-        <button className='player__nav-next'>Prev</button>
+        <button
+          className='player__nav-next'
+          onClick={nextCallback}
+        >
+          Down
+        </button>
       </span>
     </div>
   );

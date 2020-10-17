@@ -4,6 +4,7 @@ import IPlayer from '../../interfaces/player';
 
 enum ActionTypes {
     CREATE_PLAYER = 'PLAYER_BUNDLE_CREATE_PLAYER',
+    SET_PLAYER_POSITION = 'PLAYER_BUNDLE_SET_PLAYER_ACTION'
 }
 
 interface ICreatePlayerAction {
@@ -12,8 +13,14 @@ interface ICreatePlayerAction {
     colour: Colour;
 }
 
+interface ISetPlayerPositionAction {
+    type: ActionTypes.SET_PLAYER_POSITION,
+    newPosition: Position;
+    name: string;
+}
+
 // Action Combinator
-type Action = ICreatePlayerAction;
+type Action = ICreatePlayerAction | ISetPlayerPositionAction;
 
 // State Slice Definition
 export interface IPlayerState {
@@ -27,6 +34,13 @@ export const actionCreators = {
             type: ActionTypes.CREATE_PLAYER,
             name: name,
             colour: colour,
+        }
+    },
+    setPlayerPosition(name: string, newPosition: Position): ISetPlayerPositionAction {
+        return {
+            type: ActionTypes.SET_PLAYER_POSITION,
+            name: name,
+            newPosition: newPosition
         }
     }
 }
@@ -49,6 +63,24 @@ function createPlayerAction(state: IPlayerState, action: ICreatePlayerAction): I
     return state;
 }
 
+function setPlayerPositionAction(state: IPlayerState, action: ISetPlayerPositionAction): IPlayerState {
+    const existingPlayerIndex: number = state.players.findIndex(x => x.name === action.name);
+    if (existingPlayerIndex !== -1) {
+        const players = [...state.players];
+        players[existingPlayerIndex] = {
+            ...players[existingPlayerIndex],
+            position: action.newPosition
+        };
+
+        return {
+            ...state,
+            players: players
+        }
+    }
+
+    return state;
+}
+
 // Get Default
 export function getDefault(): IPlayerState {
     return {
@@ -59,7 +91,9 @@ export function getDefault(): IPlayerState {
 export default function reducer(state: IPlayerState = getDefault(), action: Action): IPlayerState {
     switch (action.type) {
         case ActionTypes.CREATE_PLAYER:
-            return createPlayerAction(state, action)
+            return createPlayerAction(state, action);
+        case ActionTypes.SET_PLAYER_POSITION:
+            return setPlayerPositionAction(state, action);
         default:
             return state;
     }

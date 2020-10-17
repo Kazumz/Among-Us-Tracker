@@ -4,13 +4,12 @@ import i18next from 'i18next';
 import '../styles/Main.scss';
 
 import Add from '../components/Add';
-import { getSection } from '../utilities/section-factory';
-import Position from '../enums/Position';
+import { getOrderedSections } from '../utilities/section-factory';
 import ISectionInformation from '../interfaces/section-information';
 
 const App: React.FC = () => {
   const sections: ReadonlyArray<ISectionInformation> = React.useMemo(
-    () => Object.values(Position).map(key => getSection(key)),
+    () => getOrderedSections(),
     []
   );
 
