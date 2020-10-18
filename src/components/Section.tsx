@@ -35,7 +35,7 @@ const Section: React.FC<ISectionProps> = ({
       dispatch
     ]
   );
- 
+
   return (
     <div className="section">
       <h3>{title}</h3>

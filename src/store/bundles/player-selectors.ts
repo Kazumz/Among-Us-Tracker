@@ -5,6 +5,7 @@ import { useStateSelector } from "../useSelector";
 import Position from '../../enums/Position';
 
 export const GetAllPlayers = (): ReadonlyArray<IPlayer> => useStateSelector(state => state.playerState.players);
+
 export const GetUnknownPlayers = (): ReadonlyArray<IPlayer> => GetFilteredPlayers(Position.Unknown)();
 export const GetDeadPlayers = (): ReadonlyArray<IPlayer> => GetFilteredPlayers(Position.Dead)();
 export const GetInnocentPlayers = (): ReadonlyArray<IPlayer> => GetFilteredPlayers(Position.Innocent)();

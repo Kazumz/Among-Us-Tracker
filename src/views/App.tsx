@@ -18,15 +18,17 @@ const App: React.FC = () => {
 
   return (
     <div className="app">
-      <header className="app__header">
-        <h1>{i18next.t('header.title')}</h1>
-      </header>
+      <div className="app__inner">
+        <header className="app__header">
+          <h1>{i18next.t('header.title')}</h1>
+        </header>
 
-      <main className="app__body">
-        {sections.map(Section => <Section />)}
+        <main className="app__body">
+          {sections.map(Section => <Section />)}
 
-        <Add />
-      </main>
+          <Add className='app-body__add' />
+        </main>
+      </div>
     </div>
   );
 }

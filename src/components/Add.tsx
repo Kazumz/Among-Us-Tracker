@@ -1,14 +1,26 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import Colour from '../enums/Colour';
+import classnames from 'classnames';
 
+import Colour from '../enums/Colour';
 import { actionCreators } from '../store/bundles/player-bundle';
+import { GetAllPlayers } from '../store/bundles/player-selectors';
 import ComboBox from './ComboBox';
 
-const Add: React.FC = () => {
-    const dispatch = useDispatch();
+interface IAddProps {
+    className?: string;
+}
 
+const Add: React.FC<IAddProps> = ({
+    className,
+}) => {
+    const dispatch = useDispatch();
+    const allPlayers = GetAllPlayers();
+
+    const [errorMessage, setErrorMessage] = React.useState<string | undefined>(undefined);
+    const [colour, setColour] = React.useState<Colour>(Colour.Unknown);
     const [name, setName] = React.useState<string>('');
+
     const onChange = React.useCallback(
         (e) => {
             setName(e.target.value);
@@ -16,7 +28,6 @@ const Add: React.FC = () => {
         [],
     );
 
-    const [colour, setColour] = React.useState<Colour>(Colour.Unknown);
     const onColourChange = React.useCallback(
         (e: React.ChangeEvent<HTMLSelectElement>) => {
             const colour: Colour = parseInt(e.target.value, 10);
@@ -26,17 +37,33 @@ const Add: React.FC = () => {
     );
 
     const addPlayer = React.useCallback(() => {
+        if (allPlayers.some(x => x.name === name)) {
+            setErrorMessage('Player already exists');
+            return;
+        }
+
+        if (allPlayers.some(x => x.color === colour)) {
+            setErrorMessage('Colour already exists');
+            return;
+        }
+
+        setErrorMessage(undefined);
         dispatch(actionCreators.createPlayer(name, colour));
-    }, 
-    [
-        dispatch, 
-        name, 
-        colour
-    ]);
+    },
+        [
+            dispatch,
+            name,
+            colour,
+            allPlayers,
+        ]);
+
+    const addClassName: string = classnames('add', className);
 
     const addDisabled = name === '' || name === undefined || colour === Colour.Unknown;
     return (
-        <div className="add">
+        <div className={addClassName}>
+            <h2>Add new Player</h2>
+
             <input
                 name={'PlayerName'}
                 placeholder='Player Name'
@@ -75,6 +102,12 @@ const Add: React.FC = () => {
             >
                 Add
             </button>
+
+            {errorMessage !== undefined &&
+                <p role='alert'>
+                    {errorMessage}
+                </p>
+            }
         </div>
     );
 }
