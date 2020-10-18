@@ -18,6 +18,7 @@ import Yellow from '../assets/yellow_character.png'
 import Brown from '../assets/brown_character.png'
 import UpArrow from '../assets/up-arrow-triangle.svg';
 import DownArrow from '../assets/down-arrow-triangle.svg';
+import Button from './Button';
 
 interface IPlayerProps {
   player: IPlayer;
@@ -52,29 +53,31 @@ const Player: React.FC<IPlayerProps> = ({
       <span className='player__name'>{player.name}</span>
 
       <span className='player__nav'>
-        <button
+        <Button
           className='player__nav-previous'
           onClick={prevCallback}
+          content={
+            <img
+              className='player__nav-previous-icon'
+              src={UpArrow}
+              alt={i18next.t('player.up')}
+            />
+          }
           aria-label={i18next.t('player.up')}
-        >
-          <img
-            className='player__nav-previous-icon'
-            src={UpArrow}
-            alt={i18next.t('player.up')}
-          />
-        </button>
+        />
 
-        <button
+        <Button
           className='player__nav-next'
           onClick={nextCallback}
+          content={
+            <img
+              className='player__nav-next-icon'
+              src={DownArrow}
+              alt={i18next.t('player.down')}
+            />
+          }
           aria-label={i18next.t('player.down')}
-        >
-          <img
-            className='player__nav-next-icon'
-            src={DownArrow}
-            alt={i18next.t('player.down')}
-          />
-        </button>
+        />
       </span>
     </div>
   );

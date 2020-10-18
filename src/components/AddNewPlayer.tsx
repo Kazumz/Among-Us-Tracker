@@ -1,20 +1,14 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import classnames from 'classnames';
 import i18next from 'i18next';
 
 import Colour from '../enums/Colour';
 import { actionCreators } from '../store/bundles/player-bundle';
 import { GetAllPlayers } from '../store/bundles/player-selectors';
 import ComboBox from './ComboBox';
+import Button from './Button';
 
-interface IAddNewPlayerProps {
-    className?: string;
-}
-
-const AddNewPlayer: React.FC<IAddNewPlayerProps> = ({
-    className,
-}) => {
+const AddNewPlayer: React.FC = () => {
     const dispatch = useDispatch();
     const allPlayers = GetAllPlayers();
 
@@ -60,11 +54,9 @@ const AddNewPlayer: React.FC<IAddNewPlayerProps> = ({
             allPlayers,
         ]);
 
-    const addClassName: string = classnames('add', className);
-
     const addDisabled = name === '' || name === undefined || colour === Colour.Unknown;
     return (
-        <div className={addClassName}>
+        <div className='add-new-player'>
             <h2>{i18next.t('addNewPlayer.title')}</h2>
 
             <input
@@ -97,14 +89,12 @@ const AddNewPlayer: React.FC<IAddNewPlayerProps> = ({
                 ])}
             />
 
-            <button
-                disabled={addDisabled}
-                aria-disabled={addDisabled}
-                onClick={addPlayer}
+            <Button
                 className='players__add'
-            >
-                {i18next.t('addNewPlayer.add')}
-            </button>
+                disabled={addDisabled}
+                onClick={addPlayer}
+                content={i18next.t('addNewPlayer.add')}
+            />
 
             {errorMessage !== undefined &&
                 <p role='alert'>

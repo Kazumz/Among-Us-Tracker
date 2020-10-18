@@ -4,13 +4,19 @@ import IPlayer from '../../interfaces/player';
 
 enum ActionTypes {
     CREATE_PLAYER = 'PLAYER_BUNDLE_CREATE_PLAYER',
-    SET_PLAYER_POSITION = 'PLAYER_BUNDLE_SET_PLAYER_ACTION'
+    SET_PLAYER_POSITION = 'PLAYER_BUNDLE_SET_PLAYER_ACTION',
+    DELETE_PLAYER = 'PLAYER_BUNDLE_DELETE_PLAYER'
 }
 
 interface ICreatePlayerAction {
     type: ActionTypes.CREATE_PLAYER;
     name: string;
     colour: Colour;
+}
+
+interface IDeletePlayerAction {
+    type: ActionTypes.DELETE_PLAYER;
+    name: string;
 }
 
 interface ISetPlayerPositionAction {
@@ -20,7 +26,9 @@ interface ISetPlayerPositionAction {
 }
 
 // Action Combinator
-type Action = ICreatePlayerAction | ISetPlayerPositionAction;
+type Action = ICreatePlayerAction |
+    ISetPlayerPositionAction |
+    IDeletePlayerAction;
 
 // State Slice Definition
 export interface IPlayerState {
@@ -34,6 +42,12 @@ export const actionCreators = {
             type: ActionTypes.CREATE_PLAYER,
             name: name,
             colour: colour,
+        }
+    },
+    deletePlayer(name: string): IDeletePlayerAction {
+        return {
+            type: ActionTypes.DELETE_PLAYER,
+            name: name,
         }
     },
     setPlayerPosition(name: string, newPosition: Position): ISetPlayerPositionAction {
@@ -57,6 +71,17 @@ function createPlayerAction(state: IPlayerState, action: ICreatePlayerAction): I
         return {
             ...state,
             players: [...state.players, newPlayer]
+        }
+    }
+
+    return state;
+}
+
+function deletePlayerAction(state: IPlayerState, action: IDeletePlayerAction): IPlayerState {
+    if (state.players.some(x => x.name === action.name)) {
+        return {
+            ...state,
+            players: state.players.filter(x => x.name !== action.name)
         }
     }
 
@@ -94,6 +119,8 @@ export default function reducer(state: IPlayerState = getDefault(), action: Acti
             return createPlayerAction(state, action);
         case ActionTypes.SET_PLAYER_POSITION:
             return setPlayerPositionAction(state, action);
+        case ActionTypes.DELETE_PLAYER:
+            return deletePlayerAction(state, action);
         default:
             return state;
     }

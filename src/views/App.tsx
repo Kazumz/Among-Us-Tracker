@@ -3,12 +3,12 @@ import i18next from 'i18next';
 
 import '../styles/Main.scss';
 
-import AddNewPlayer from '../components/AddNewPlayer';
 import {
   getComponent,
   getPositionSortOrder
 } from '../utilities/position-utilities';
 import Position from '../enums/Position';
+import Management from '../components/Management';
 
 const App: React.FC = () => {
   const sections: ReadonlyArray<React.FunctionComponent> = React.useMemo(
@@ -28,7 +28,7 @@ const App: React.FC = () => {
             {sections.map(Section => <Section />)}
           </div>
 
-          <AddNewPlayer className='app-body__add' />
+          <Management />
         </main>
       </div>
     </div>

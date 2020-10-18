@@ -20,6 +20,15 @@ export default {
     "suspicious": {
         "title": "Suspicious"
     },
+    'player': {
+        'up': 'Up Arrow',
+        'down': 'Down Arrow'
+    },
+    'managePlayers': {
+        'title': 'Manage Players',
+        'selectPlaceholder': 'None',
+        'removePlayer': 'Remove'
+    },
     'addNewPlayer': {
         'title': 'Add New Player',
         'playerAlreadyExists': 'Player already exists',
