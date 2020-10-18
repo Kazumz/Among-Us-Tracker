@@ -1,6 +1,7 @@
 .section {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    min-height: 8.8rem;
 
     & > .section__player-list {
         display: flex;
