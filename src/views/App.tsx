@@ -3,7 +3,7 @@ import i18next from 'i18next';
 
 import '../styles/Main.scss';
 
-import Add from '../components/Add';
+import AddNewPlayer from '../components/AddNewPlayer';
 import {
   getComponent,
   getPositionSortOrder
@@ -28,7 +28,7 @@ const App: React.FC = () => {
             {sections.map(Section => <Section />)}
           </div>
 
-          <Add className='app-body__add' />
+          <AddNewPlayer className='app-body__add' />
         </main>
       </div>
     </div>

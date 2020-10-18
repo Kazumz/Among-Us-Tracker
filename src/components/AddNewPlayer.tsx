@@ -7,11 +7,11 @@ import { actionCreators } from '../store/bundles/player-bundle';
 import { GetAllPlayers } from '../store/bundles/player-selectors';
 import ComboBox from './ComboBox';
 
-interface IAddProps {
+interface IAddNewPlayerProps {
     className?: string;
 }
 
-const Add: React.FC<IAddProps> = ({
+const AddNewPlayer: React.FC<IAddNewPlayerProps> = ({
     className,
 }) => {
     const dispatch = useDispatch();
@@ -112,4 +112,4 @@ const Add: React.FC<IAddProps> = ({
     );
 }
 
-export default Add;
+export default AddNewPlayer;
