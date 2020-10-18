@@ -19,5 +19,29 @@ export default {
     },
     "suspicious": {
         "title": "Suspicious"
+    },
+    'addNewPlayer': {
+        'title': 'Add New Player',
+        'playerAlreadyExists': 'Player already exists',
+        'colourAlreadyExists': 'Colour already exists',
+        'add': 'Add',
+        'playerNameField': {
+            'placeholder': 'Player Name'
+        },
+        'playerColourSelect': {
+            'unknown': 'Unknown',
+            'black': 'Black',
+            'blue': 'Blue',
+            'brown': 'Brown',
+            'cyan': 'Cyan',
+            'green': 'Green',
+            'lime': 'Lime',
+            'orange': 'Orange',
+            'pink': 'Pink',
+            'purple': 'Purple',
+            'red': 'Red',
+            'white': 'White',
+            'yellow': 'Yellow'
+        }
     }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import classnames from 'classnames';
+import i18next from 'i18next';
 
 import Colour from '../enums/Colour';
 import { actionCreators } from '../store/bundles/player-bundle';
@@ -38,16 +39,18 @@ const AddNewPlayer: React.FC<IAddNewPlayerProps> = ({
 
     const addPlayer = React.useCallback(() => {
         if (allPlayers.some(x => x.name === name)) {
-            setErrorMessage('Player already exists');
+            setErrorMessage(i18next.t('addNewPlayer.playerAlreadyExists'));
             return;
         }
 
         if (allPlayers.some(x => x.color === colour)) {
-            setErrorMessage('Colour already exists');
+            setErrorMessage(i18next.t('addNewPlayer.colourAlreadyExists'));
             return;
         }
 
         setErrorMessage(undefined);
+        setColour(Colour.Unknown);
+        setName('');
         dispatch(actionCreators.createPlayer(name, colour));
     },
         [
@@ -62,15 +65,15 @@ const AddNewPlayer: React.FC<IAddNewPlayerProps> = ({
     const addDisabled = name === '' || name === undefined || colour === Colour.Unknown;
     return (
         <div className={addClassName}>
-            <h2>Add new Player</h2>
+            <h2>{i18next.t('addNewPlayer.title')}</h2>
 
             <input
                 name={'PlayerName'}
-                placeholder='Player Name'
+                placeholder={i18next.t('addNewPlayer.playerNameField.placeholder')}
                 value={name}
                 type='text'
                 onChange={onChange}
-                aria-label='Player Name'
+                aria-label={i18next.t('addNewPlayer.playerNameField.placeholder')}
                 autoComplete='on'
             />
 
@@ -78,19 +81,19 @@ const AddNewPlayer: React.FC<IAddNewPlayerProps> = ({
                 onChange={onColourChange}
                 value={colour}
                 options={new Map<number, string>([
-                    [Colour.Unknown, 'Unknown'],
-                    [Colour.Black, 'Black'],
-                    [Colour.Blue, 'Blue'],
-                    [Colour.Brown, 'Brown'],
-                    [Colour.Cyan, 'Cyan'],
-                    [Colour.Green, 'Green'],
-                    [Colour.Lime, 'Lime'],
-                    [Colour.Orange, 'Orange'],
-                    [Colour.Pink, 'Pink'],
-                    [Colour.Purple, 'Purple'],
-                    [Colour.Red, 'Red'],
-                    [Colour.White, 'White'],
-                    [Colour.Yellow, 'Yellow']
+                    [Colour.Unknown, i18next.t('addNewPlayer.playerColourSelect.unknown')],
+                    [Colour.Black, i18next.t('addNewPlayer.playerColourSelect.black')],
+                    [Colour.Blue, i18next.t('addNewPlayer.playerColourSelect.blue')],
+                    [Colour.Brown, i18next.t('addNewPlayer.playerColourSelect.brown')],
+                    [Colour.Cyan, i18next.t('addNewPlayer.playerColourSelect.cyan')],
+                    [Colour.Green, i18next.t('addNewPlayer.playerColourSelect.green')],
+                    [Colour.Lime, i18next.t('addNewPlayer.playerColourSelect.lime')],
+                    [Colour.Orange, i18next.t('addNewPlayer.playerColourSelect.orange')],
+                    [Colour.Pink, i18next.t('addNewPlayer.playerColourSelect.pink')],
+                    [Colour.Purple, i18next.t('addNewPlayer.playerColourSelect.purple')],
+                    [Colour.Red, i18next.t('addNewPlayer.playerColourSelect.red')],
+                    [Colour.White, i18next.t('addNewPlayer.playerColourSelect.white')],
+                    [Colour.Yellow, i18next.t('addNewPlayer.playerColourSelect.yellow')]
                 ])}
             />
 
@@ -100,7 +103,7 @@ const AddNewPlayer: React.FC<IAddNewPlayerProps> = ({
                 onClick={addPlayer}
                 className='players__add'
             >
-                Add
+                {i18next.t('addNewPlayer.add')}
             </button>
 
             {errorMessage !== undefined &&
