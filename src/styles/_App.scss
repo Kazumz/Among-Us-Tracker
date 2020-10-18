@@ -16,13 +16,18 @@
   
     & > .app__body {
       display: grid;
+      grid-template-columns: 1fr auto;
       overflow-y: auto;
       overflow-x: hidden;
       padding: 2.5rem;
       padding-top: 0;
 
+      @media only screen and (max-width: $tablet-breakpoint) {
+        grid-template-columns: 1fr;
+      }
+
       & > .app-body__add {
-        margin-top: 1.5rem;
+        min-width: 15rem;
       }
     }
   }

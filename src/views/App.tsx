@@ -24,7 +24,9 @@ const App: React.FC = () => {
         </header>
 
         <main className="app__body">
-          {sections.map(Section => <Section />)}
+          <div className='app-body__sections'>
+            {sections.map(Section => <Section />)}
+          </div>
 
           <Add className='app-body__add' />
         </main>
