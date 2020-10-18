@@ -6,7 +6,7 @@ import { actionCreators } from '../store/bundles/player-bundle';
 import {
   getNextPosition,
   getPreviousPosition
-} from '../utilities/section-factory';
+} from '../utilities/position-utilities';
 import Player from './Player';
 
 interface ISectionProps {

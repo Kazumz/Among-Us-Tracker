@@ -4,12 +4,11 @@ import i18next from 'i18next';
 import '../styles/Main.scss';
 
 import Add from '../components/Add';
-import { getOrderedSections } from '../utilities/section-factory';
-import ISectionInformation from '../interfaces/section-information';
+import { getAllComponents } from '../utilities/position-utilities';
 
 const App: React.FC = () => {
-  const sections: ReadonlyArray<ISectionInformation> = React.useMemo(
-    () => getOrderedSections(),
+  const sections: ReadonlyArray<React.FunctionComponent> = React.useMemo(
+    () => getAllComponents(),
     []
   );
 
@@ -20,7 +19,7 @@ const App: React.FC = () => {
       </header>
 
       <main className="app__body">
-        {sections.map(x => <x.component />)}
+        {sections.map(Section => <Section />)}
 
         <Add />
       </main>
