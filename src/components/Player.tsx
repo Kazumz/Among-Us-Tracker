@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import i18next from 'i18next';
 
 import Colour from '../enums/Colour';
 import IPlayer from '../interfaces/player';
@@ -51,20 +52,28 @@ const Player: React.FC<IPlayerProps> = ({
       <span className='player__name'>{player.name}</span>
 
       <span className='player__nav'>
-      <button
+        <button
           className='player__nav-previous'
           onClick={prevCallback}
-          aria-label='up'
+          aria-label={i18next.t('player.up')}
         >
-          <img className='player__nav-previous-icon' src={UpArrow} />
+          <img
+            className='player__nav-previous-icon'
+            src={UpArrow}
+            alt={i18next.t('player.up')}
+          />
         </button>
 
         <button
           className='player__nav-next'
           onClick={nextCallback}
-          aria-label='down'
+          aria-label={i18next.t('player.down')}
         >
-          <img className='player__nav-next-icon' src={DownArrow} />
+          <img
+            className='player__nav-next-icon'
+            src={DownArrow}
+            alt={i18next.t('player.down')}
+          />
         </button>
       </span>
     </div>
