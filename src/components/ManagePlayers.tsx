@@ -23,11 +23,16 @@ const ManagePlayers: React.FC = () => {
     const removePlayer = React.useCallback(
         () => {
             const playerData = allPlayers[player];
-            
+
             setPlayer(0);
             dispatch(actionCreators.deletePlayer(playerData.name));
         },
         [dispatch, allPlayers, player]
+    );
+
+    const resetAllPlayers = React.useCallback(
+        () => dispatch(actionCreators.resetAllPlayers()),
+        [dispatch]
     );
 
     const mappedPlayers = React.useMemo(
@@ -59,6 +64,12 @@ const ManagePlayers: React.FC = () => {
                 disabled={allPlayers.length === 0}
                 onClick={removePlayer}
                 content={i18next.t('managePlayers.removePlayer')}
+            />
+
+            <Button
+                disabled={allPlayers.length === 0}
+                onClick={resetAllPlayers}
+                content={i18next.t('managePlayers.resetAllPlayers')}
             />
         </div>
     );

@@ -27,7 +27,8 @@ export default {
     'managePlayers': {
         'title': 'Manage Players',
         'selectPlaceholder': 'None',
-        'removePlayer': 'Remove'
+        'removePlayer': 'Remove',
+        'resetAllPlayers': 'Reset All'
     },
     'addNewPlayer': {
         'title': 'Add New Player',

@@ -5,13 +5,18 @@ import IPlayer from '../../interfaces/player';
 enum ActionTypes {
     CREATE_PLAYER = 'PLAYER_BUNDLE_CREATE_PLAYER',
     SET_PLAYER_POSITION = 'PLAYER_BUNDLE_SET_PLAYER_ACTION',
-    DELETE_PLAYER = 'PLAYER_BUNDLE_DELETE_PLAYER'
+    DELETE_PLAYER = 'PLAYER_BUNDLE_DELETE_PLAYER',
+    RESET_ALL_PLAYERS = 'PLAYER_BUNDLE_RESET_ALL_PLAYERS'
 }
 
 interface ICreatePlayerAction {
     type: ActionTypes.CREATE_PLAYER;
     name: string;
     colour: Colour;
+}
+
+interface IResetAllPlayersAction {
+    type: ActionTypes.RESET_ALL_PLAYERS;
 }
 
 interface IDeletePlayerAction {
@@ -28,7 +33,8 @@ interface ISetPlayerPositionAction {
 // Action Combinator
 type Action = ICreatePlayerAction |
     ISetPlayerPositionAction |
-    IDeletePlayerAction;
+    IDeletePlayerAction |
+    IResetAllPlayersAction;
 
 // State Slice Definition
 export interface IPlayerState {
@@ -42,6 +48,11 @@ export const actionCreators = {
             type: ActionTypes.CREATE_PLAYER,
             name: name,
             colour: colour,
+        }
+    },
+    resetAllPlayers(): IResetAllPlayersAction {
+        return {
+            type: ActionTypes.RESET_ALL_PLAYERS,
         }
     },
     deletePlayer(name: string): IDeletePlayerAction {
@@ -72,6 +83,24 @@ function createPlayerAction(state: IPlayerState, action: ICreatePlayerAction): I
             ...state,
             players: [...state.players, newPlayer]
         }
+    }
+
+    return state;
+}
+
+function resetAllPlayersAction(state: IPlayerState, action: IResetAllPlayersAction): IPlayerState {
+    if (state.players.some(x => x.position !== Position.Unknown)) {
+        const players = state.players.map(x => {
+            return {
+                ...x,
+                position: Position.Unknown
+            }
+        });
+
+        return {
+            ...state,
+            players: players
+        };
     }
 
     return state;
@@ -121,6 +150,8 @@ export default function reducer(state: IPlayerState = getDefault(), action: Acti
             return setPlayerPositionAction(state, action);
         case ActionTypes.DELETE_PLAYER:
             return deletePlayerAction(state, action);
+        case ActionTypes.RESET_ALL_PLAYERS:
+            return resetAllPlayersAction(state, action);
         default:
             return state;
     }
