@@ -15,6 +15,8 @@ import Red from '../assets/red_character.png'
 import White from '../assets/white_character.png'
 import Yellow from '../assets/yellow_character.png'
 import Brown from '../assets/brown_character.png'
+import UpArrow from '../assets/up-arrow-triangle.svg';
+import DownArrow from '../assets/down-arrow-triangle.svg';
 
 interface IPlayerProps {
   player: IPlayer;
@@ -52,15 +54,17 @@ const Player: React.FC<IPlayerProps> = ({
       <button
           className='player__nav-previous'
           onClick={prevCallback}
+          aria-label='up'
         >
-          Up
+          <img className='player__nav-previous-icon' src={UpArrow} />
         </button>
 
         <button
           className='player__nav-next'
           onClick={nextCallback}
+          aria-label='down'
         >
-          Down
+          <img className='player__nav-next-icon' src={DownArrow} />
         </button>
       </span>
     </div>

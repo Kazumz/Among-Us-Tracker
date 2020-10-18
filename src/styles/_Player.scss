@@ -78,5 +78,19 @@
     & > .player__nav {
         display: grid;
         gap: 0.5rem;
+
+        & > .player__nav-previous {
+            & > .player__nav-previous-icon {
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        & > .player__nav-next {
+            & > .player__nav-next-icon {
+                width: 16px;
+                height: 16px;
+            }
+        }
     }
 }
