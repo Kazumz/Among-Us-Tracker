@@ -11,10 +11,6 @@ const INNOCENT_SORT_ORDER: number = 3;
 const DEAD_SORT_ORDER: number = 4;
 const UNKNOWN_SORT_ORDER: number = 5;
 
-export function getAllComponents(): ReadonlyArray<React.FunctionComponent> {
-    return Object.values(Position).sort(key => getPositionSortOrder(key) ?? -1).map(key => getComponent(key))
-}
-
 export function getPreviousPosition(currentPosition: Position): Position {
     const currentSortOrder = getPositionSortOrder(currentPosition);
     const next = currentSortOrder !== undefined ? getSortOrderPosition(currentSortOrder - 1) : currentPosition;
@@ -51,7 +47,7 @@ function getSortOrderPosition(sortOrder: number): Position | undefined {
     }
 }
 
-function getPositionSortOrder(position: Position): number | undefined {
+export function getPositionSortOrder(position: Position): number | undefined {
     switch (position) {
         case Position.Impostor:
             return IMPOSTOR_SORT_ORDER;
@@ -73,7 +69,7 @@ function getPositionSortOrder(position: Position): number | undefined {
     }
 }
 
-function getComponent(position: Position): React.FunctionComponent {
+export function getComponent(position: Position): React.FunctionComponent { 
     switch (position) {
         case Position.Impostor:
             return Impostor;

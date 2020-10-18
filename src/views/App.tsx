@@ -4,11 +4,15 @@ import i18next from 'i18next';
 import '../styles/Main.scss';
 
 import Add from '../components/Add';
-import { getAllComponents } from '../utilities/position-utilities';
+import {
+  getComponent,
+  getPositionSortOrder
+} from '../utilities/position-utilities';
+import Position from '../enums/Position';
 
 const App: React.FC = () => {
   const sections: ReadonlyArray<React.FunctionComponent> = React.useMemo(
-    () => getAllComponents(),
+    () => Object.values(Position).sort(key => getPositionSortOrder(key) ?? -1).map(key => getComponent(key)),
     []
   );
 
