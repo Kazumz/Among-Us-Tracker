@@ -14,7 +14,7 @@
     </li>
 </ul>
 
-## Major Technologies:
+## Major Technologies
 <ul>
     <li>
       Create React App 3
@@ -39,7 +39,7 @@
     </li>
 </ul>
 
-## Key Points:
+## Key Points
 <ul>
   <li>I set up this repository and created this application to primarily assist with tracking how 'sus' players are between rounds in the popular game Among Us.
   </li>
