@@ -20,8 +20,10 @@ const App: React.FC = () => {
     <div className="app">
       <div className="app__inner">
         <header className="app__header">
-          <h1>{i18next.t('header.title')}</h1>
+          <h1>{i18next.t('app.title')}</h1>
         </header>
+
+        <p className="app__information">{i18next.t('app.information')}</p>
 
         <main className="app__body">
           <div className='app-body__sections'>
