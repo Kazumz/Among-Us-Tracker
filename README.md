@@ -37,3 +37,8 @@
     The architecture in this project is intended to be easy to read, simple, and scalable. It employs the most important hard hitting design patterns like BEM without adding complexity in terms of learning and writing code. It's simple, and that's what I like!
   </li>
 </ul>
+
+## Credits
+<ul>
+    <li>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></li>
+</ul>
