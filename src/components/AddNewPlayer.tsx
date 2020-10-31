@@ -60,6 +60,7 @@ const AddNewPlayer: React.FC = () => {
             <h2>{i18next.t('addNewPlayer.title')}</h2>
 
             <input
+                style={{minWidth: '0'}}
                 name={'PlayerName'}
                 placeholder={i18next.t('addNewPlayer.playerNameField.placeholder')}
                 value={name}

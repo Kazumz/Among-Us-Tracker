@@ -1,6 +1,7 @@
 export default {
-    "header": {
-        "title": "Among Us Tracker"
+    "app": {
+        "title": "Among Us Tracker",
+        "information": "Add new players below to start tracking. Move players between sections using the arrows."
     },
     "footer": {
         "createdBy": "Created by Kallum Parr | MIT Licence"
