@@ -21,6 +21,15 @@ const App: React.FC = () => {
       <div className="app__inner">
         <header className="app__header">
           <h1>{i18next.t('app.title')}</h1>
+
+          <a
+            className='app__source-code'
+            href="https://github.com/Kazumz/Among-Us-Tracker"
+            rel="noreferrer noopener"
+            target="_blank"
+          >
+            {i18next.t('app.sourceCode')}
+           </a>
         </header>
 
         <p className="app__information">{i18next.t('app.information')}</p>

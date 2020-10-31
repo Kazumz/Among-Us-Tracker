@@ -1,6 +1,7 @@
 export default {
     "app": {
         "title": "Among Us Tracker",
+        "sourceCode": "Source Code",
         "information": "Add new players below to start tracking. Move players between sections using the arrows."
     },
     "footer": {

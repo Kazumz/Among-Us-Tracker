@@ -11,7 +11,14 @@
     margin: 0 auto;
 
     & > .app__header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
       text-align: center;
+
+      & > .app__source-code {
+        padding: 1rem;
+      }
 
       @media only screen and (max-width: $tablet-breakpoint) {
         display: none;
