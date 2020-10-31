@@ -12,6 +12,9 @@
     <li>
       Creating sessions for people to view. One owner, many viewers.
     </li>
+    <li>
+      Ability to add players without names, rapid add.
+    </li>
 </ul>
 
 ## Major Technologies
