@@ -3,6 +3,7 @@ import i18next from 'i18next';
 
 import Section from './Section';
 import { GetDeadPlayers } from '../store/bundles/player-selectors';
+import DeadImage from '../assets/dead.svg';
 
 const Dead: React.FC = () => {
     const players = GetDeadPlayers();
@@ -12,7 +13,9 @@ const Dead: React.FC = () => {
             <Section
                 title={i18next.t('dead.title')}
                 players={players}
-            />
+                icon={DeadImage}
+                iconAlt={i18next.t('dead.title')}
+            /> 
         </div>
     );
 }

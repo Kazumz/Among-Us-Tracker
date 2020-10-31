@@ -12,11 +12,15 @@ import Player from './Player';
 interface ISectionProps {
   title: string;
   players?: ReadonlyArray<IPlayer>;
+  icon?: string;
+  iconAlt?: string;
 }
 
 const Section: React.FC<ISectionProps> = ({
   title,
-  players
+  players,
+  icon,
+  iconAlt,
 }) => {
   const dispatch = useDispatch();
 
@@ -40,9 +44,15 @@ const Section: React.FC<ISectionProps> = ({
     <div className="section">
       <h3>{title}</h3>
 
-      <ul className='section__player-list'>
-        {playerElements}
-      </ul>
+      <span className='section__row'>
+        {icon !== undefined &&
+          <img className='section__row-icon' src={icon} alt={iconAlt} />
+        }
+
+        <ul className='section__player-list'>
+          {playerElements}
+        </ul>
+      </span>
     </div>
   );
 }

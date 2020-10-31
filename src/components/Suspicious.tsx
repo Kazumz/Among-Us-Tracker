@@ -3,6 +3,7 @@ import i18next from 'i18next';
 
 import Section from './Section';
 import { GetSuspiciousPlayers } from '../store/bundles/player-selectors';
+import SuspiciousImg from '../assets/suspicious.svg';
 
 const Suspicious: React.FC = () => {
     const players = GetSuspiciousPlayers();
@@ -12,6 +13,8 @@ const Suspicious: React.FC = () => {
             <Section
                 title={i18next.t('suspicious.title')}
                 players={players}
+                icon={SuspiciousImg}
+                iconAlt={i18next.t('suspicious.title')}
             />
         </div>
     );

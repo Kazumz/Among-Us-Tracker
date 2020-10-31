@@ -3,6 +3,7 @@ import i18next from 'i18next';
 
 import Section from './Section';
 import { GetInnocentPlayers } from '../store/bundles/player-selectors';
+import InnocentImg from '../assets/innocent.svg'
 
 const Innocent: React.FC = () => {
     const players = GetInnocentPlayers();
@@ -12,6 +13,8 @@ const Innocent: React.FC = () => {
             <Section
                 title={i18next.t('innocent.title')}
                 players={players}
+                icon={InnocentImg}
+                iconAlt={i18next.t('innocent.title')}
             />
         </div>
     );
