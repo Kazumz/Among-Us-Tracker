@@ -80,6 +80,9 @@
         gap: 0.5rem;
 
         & > .player__nav-previous {
+            background: none;
+            border: none;
+        
             & > .player__nav-previous-icon {
                 width: 16px;
                 height: 16px;
@@ -87,6 +90,9 @@
         }
 
         & > .player__nav-next {
+            background: none;
+            border: none;
+        
             & > .player__nav-next-icon {
                 width: 16px;
                 height: 16px;
