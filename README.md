@@ -4,6 +4,16 @@
 - [Preview current build](https://www.amongustracker.com/)
 - [![Netlify Status](https://api.netlify.com/api/v1/badges/1d42fb68-3529-4166-b987-f8d4bcf881cd/deploy-status)](https://app.netlify.com/sites/dreamy-fermat-5bfb01/deploys)
 
+## Upcoming Features
+<ul>
+    <li>
+      Drag and drop between sections
+    </li>
+    <li>
+      Creating sessions for people to view. One owner, many viewers.
+    </li>
+</ul>
+
 ## Major Technologies:
 <ul>
     <li>
