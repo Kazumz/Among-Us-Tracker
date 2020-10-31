@@ -1,16 +1,13 @@
 .section {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
     min-height: 5rem;
 
     & > .section__player-list {
         display: flex;
         flex-direction: row;
         flex-flow: wrap;
-
-        & > .section__player-list-item {
-            margin-right: 1rem;
-            margin-bottom: 1rem;
-        }
+        background-color: $SectionBackgroundBrush;
+        border-radius: 5px;
+        gap: 1rem;
+        padding: 1rem;
     }
 }
