@@ -12,6 +12,10 @@
 
     & > .app__header {
       text-align: center;
+
+      @media only screen and (max-width: $tablet-breakpoint) {
+        display: none;
+      }
     }
 
     & > .app__body {
