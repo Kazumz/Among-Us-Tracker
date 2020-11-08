@@ -12,7 +12,16 @@ import Management from '../components/Management';
 
 const App: React.FC = () => {
   const sections: ReadonlyArray<React.FunctionComponent> = React.useMemo(
-    () => Object.values(Position).sort(key => getPositionSortOrder(key) ?? -1).map(key => getComponent(key)),
+    () => {
+      return Object.values(Position)
+        .sort((a, b) => {
+          const firstPosition = getPositionSortOrder(a) ?? 0;
+          const secondPosition = getPositionSortOrder(b) ?? 0;
+
+          return firstPosition > secondPosition ? 1 : -1
+        })
+        .map(key => getComponent(key));
+    },
     []
   );
 
@@ -29,7 +38,7 @@ const App: React.FC = () => {
             target="_blank"
           >
             {i18next.t('app.sourceCode')}
-           </a>
+          </a>
         </header>
 
         <p className="app__information">{i18next.t('app.information')}</p>
