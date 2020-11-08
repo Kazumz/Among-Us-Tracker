@@ -1,6 +1,7 @@
 import Position from '../../enums/Position';
 import Colour from '../../enums/Colour';
 import IPlayer from '../../interfaces/player';
+import { MAX_CHARACTER_NAME } from '../../constants/player-constants';
 
 enum ActionTypes {
     CREATE_PLAYER = 'PLAYER_BUNDLE_CREATE_PLAYER',
@@ -78,7 +79,8 @@ function createPlayerAction(state: IPlayerState, action: ICreatePlayerAction): I
         color: action.colour
     };
 
-    if (!state.players.some(x => x.name === newPlayer.name || x.color === newPlayer.color)) {
+    if (newPlayer.name.length <= MAX_CHARACTER_NAME && 
+        !state.players.some(x => x.name === newPlayer.name || x.color === newPlayer.color)) {
         return {
             ...state,
             players: [...state.players, newPlayer]

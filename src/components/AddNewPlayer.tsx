@@ -7,6 +7,7 @@ import { actionCreators } from '../store/bundles/player-bundle';
 import { GetAllPlayers } from '../store/bundles/player-selectors';
 import ComboBox from './ComboBox';
 import Button from './Button';
+import { MAX_CHARACTER_NAME } from '../constants/player-constants';
 
 const AddNewPlayer: React.FC = () => {
     const dispatch = useDispatch();
@@ -39,6 +40,11 @@ const AddNewPlayer: React.FC = () => {
 
         if (allPlayers.some(x => x.color === colour)) {
             setErrorMessage(i18next.t('addNewPlayer.colourAlreadyExists'));
+            return;
+        }
+
+        if (name.length > MAX_CHARACTER_NAME) {
+            setErrorMessage(i18next.t('addNewPlayer.nameLength'));
             return;
         }
 

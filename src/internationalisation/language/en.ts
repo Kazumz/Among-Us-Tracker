@@ -36,6 +36,7 @@ export default {
         'title': 'Add New Player',
         'playerAlreadyExists': 'Player already exists',
         'colourAlreadyExists': 'Colour already exists',
+        'nameLength': 'Max name length is 10',
         'add': 'Add',
         'playerNameField': {
             'placeholder': 'Player Name'
