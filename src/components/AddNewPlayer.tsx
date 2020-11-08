@@ -97,14 +97,13 @@ const AddNewPlayer: React.FC = () => {
             />
 
             <Button
-                className='players__add'
                 disabled={addDisabled}
                 onClick={addPlayer}
                 content={i18next.t('addNewPlayer.add')}
             />
 
             {errorMessage !== undefined &&
-                <p role='alert'>
+                <p className='add-new-player__error' role='alert'>
                     {errorMessage}
                 </p>
             }

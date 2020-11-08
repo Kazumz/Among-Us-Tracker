@@ -2,4 +2,9 @@
     display: grid;
     grid-auto-rows: 3rem;
     gap: 1rem;
+
+    & > .add-new-player__error {
+        text-align: center;
+        color: $ErrorBrush;
+    }
 }
