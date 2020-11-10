@@ -2,8 +2,8 @@ import React from 'react';
 
 interface IComboBoxProps {
     onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-    value: number;
-    options: ReadonlyMap<number, string>;
+    value: string | number;
+    options: ReadonlyMap<string | number, string>;
 }
 
 const ComboBox: React.FC<IComboBoxProps> = ({
@@ -28,9 +28,9 @@ const ComboBox: React.FC<IComboBoxProps> = ({
     );
 };
 
-function renderOptions(options: ReadonlyMap<number, string>): ReadonlyArray<JSX.Element> {
+function renderOptions(options: ReadonlyMap<string | number, string>): ReadonlyArray<JSX.Element> {
     const elements: Array<JSX.Element> = [];
-    options.forEach((value: string, key: number) => {
+    options.forEach((value: string, key: string | number) => {
         elements.push(
             <option
                 key={key}

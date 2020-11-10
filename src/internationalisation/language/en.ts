@@ -34,27 +34,27 @@ export default {
     },
     'addNewPlayer': {
         'title': 'Add New Player',
-        'playerAlreadyExists': 'Player already exists',
         'colourAlreadyExists': 'Colour already exists',
         'nameLength': 'Max name length is 10',
         'add': 'Add',
+        'addAll': 'Add All',
         'playerNameField': {
             'placeholder': 'Player Name'
         },
-        'playerColourSelect': {
-            'unknown': 'Unknown',
-            'black': 'Black',
-            'blue': 'Blue',
-            'brown': 'Brown',
-            'cyan': 'Cyan',
-            'green': 'Green',
-            'lime': 'Lime',
-            'orange': 'Orange',
-            'pink': 'Pink',
-            'purple': 'Purple',
-            'red': 'Red',
-            'white': 'White',
-            'yellow': 'Yellow'
-        }
+    },
+    "playerColour": {
+        'unknown': 'Unknown',
+        'black': 'Black',
+        'blue': 'Blue',
+        'brown': 'Brown',
+        'cyan': 'Cyan',
+        'green': 'Green',
+        'lime': 'Lime',
+        'orange': 'Orange',
+        'pink': 'Pink',
+        'purple': 'Purple',
+        'red': 'Red',
+        'white': 'White',
+        'yellow': 'Yellow'
     }
 }

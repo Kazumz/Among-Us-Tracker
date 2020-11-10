@@ -7,7 +7,8 @@ enum ActionTypes {
     CREATE_PLAYER = 'PLAYER_BUNDLE_CREATE_PLAYER',
     SET_PLAYER_POSITION = 'PLAYER_BUNDLE_SET_PLAYER_ACTION',
     DELETE_PLAYER = 'PLAYER_BUNDLE_DELETE_PLAYER',
-    RESET_ALL_PLAYERS = 'PLAYER_BUNDLE_RESET_ALL_PLAYERS'
+    RESET_ALL_PLAYERS = 'PLAYER_BUNDLE_RESET_ALL_PLAYERS',
+    ADD_ALL_PLAYERS = 'PLAYERS_BUNDLE_ADD_ALL_PLAYERS',
 }
 
 interface ICreatePlayerAction {
@@ -20,22 +21,27 @@ interface IResetAllPlayersAction {
     type: ActionTypes.RESET_ALL_PLAYERS;
 }
 
+interface IAddAllPlayersAction {
+    type: ActionTypes.ADD_ALL_PLAYERS;
+}
+
 interface IDeletePlayerAction {
     type: ActionTypes.DELETE_PLAYER;
-    name: string;
+    colour: Colour;
 }
 
 interface ISetPlayerPositionAction {
     type: ActionTypes.SET_PLAYER_POSITION,
     newPosition: Position;
-    name: string;
+    colour: Colour;
 }
 
 // Action Combinator
 type Action = ICreatePlayerAction |
     ISetPlayerPositionAction |
     IDeletePlayerAction |
-    IResetAllPlayersAction;
+    IResetAllPlayersAction |
+    IAddAllPlayersAction;
 
 // State Slice Definition
 export interface IPlayerState {
@@ -56,17 +62,22 @@ export const actionCreators = {
             type: ActionTypes.RESET_ALL_PLAYERS,
         }
     },
-    deletePlayer(name: string): IDeletePlayerAction {
+    deletePlayer(colour: Colour): IDeletePlayerAction {
         return {
             type: ActionTypes.DELETE_PLAYER,
-            name: name,
+            colour: colour,
         }
     },
-    setPlayerPosition(name: string, newPosition: Position): ISetPlayerPositionAction {
+    setPlayerPosition(colour: Colour, newPosition: Position): ISetPlayerPositionAction {
         return {
             type: ActionTypes.SET_PLAYER_POSITION,
-            name: name,
+            colour: colour,
             newPosition: newPosition
+        }
+    },
+    addAllPlayers(): IAddAllPlayersAction {
+        return {
+            type: ActionTypes.ADD_ALL_PLAYERS
         }
     }
 }
@@ -76,11 +87,11 @@ function createPlayerAction(state: IPlayerState, action: ICreatePlayerAction): I
     const newPlayer: IPlayer = {
         name: action.name,
         position: Position.Unknown,
-        color: action.colour
+        colour: action.colour
     };
 
-    if (newPlayer.name.length <= MAX_CHARACTER_NAME && 
-        !state.players.some(x => x.name === newPlayer.name || x.color === newPlayer.color)) {
+    if (newPlayer.name.length <= MAX_CHARACTER_NAME &&
+        !state.players.some(x => x.colour === newPlayer.colour)) {
         return {
             ...state,
             players: [...state.players, newPlayer]
@@ -109,10 +120,10 @@ function resetAllPlayersAction(state: IPlayerState, action: IResetAllPlayersActi
 }
 
 function deletePlayerAction(state: IPlayerState, action: IDeletePlayerAction): IPlayerState {
-    if (state.players.some(x => x.name === action.name)) {
+    if (state.players.some(x => x.colour === action.colour)) {
         return {
             ...state,
-            players: state.players.filter(x => x.name !== action.name)
+            players: state.players.filter(x => x.colour !== action.colour)
         }
     }
 
@@ -120,7 +131,7 @@ function deletePlayerAction(state: IPlayerState, action: IDeletePlayerAction): I
 }
 
 function setPlayerPositionAction(state: IPlayerState, action: ISetPlayerPositionAction): IPlayerState {
-    const existingPlayerIndex: number = state.players.findIndex(x => x.name === action.name);
+    const existingPlayerIndex: number = state.players.findIndex(x => x.colour === action.colour);
     if (existingPlayerIndex !== -1) {
         const players = [...state.players];
         players[existingPlayerIndex] = {
@@ -132,6 +143,34 @@ function setPlayerPositionAction(state: IPlayerState, action: ISetPlayerPosition
             ...state,
             players: players
         }
+    }
+
+    return state;
+}
+
+function addAllPlayersAction(state: IPlayerState, action: IAddAllPlayersAction): IPlayerState {
+    let updated = false;
+
+    const newPlayers = [...state.players];
+    Object.values(Colour).forEach(colour => {
+        if (colour !== Colour.Unknown && !newPlayers.some(x => x.colour === colour)) {
+            updated = true;
+
+            const newPlayer: IPlayer = {
+                name: '',
+                position: Position.Unknown,
+                colour: colour
+            };
+
+            newPlayers.push(newPlayer);
+        }
+    });
+
+    if (updated) {
+        return {
+            ...state,
+            players: newPlayers
+        };
     }
 
     return state;
@@ -154,6 +193,8 @@ export default function reducer(state: IPlayerState = getDefault(), action: Acti
             return deletePlayerAction(state, action);
         case ActionTypes.RESET_ALL_PLAYERS:
             return resetAllPlayersAction(state, action);
+        case ActionTypes.ADD_ALL_PLAYERS:
+            return addAllPlayersAction(state, action);
         default:
             return state;
     }

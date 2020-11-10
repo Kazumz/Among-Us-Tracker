@@ -32,23 +32,23 @@ const Player: React.FC<IPlayerProps> = ({
   prevCallback,
 }) => {
   const playerClassName: string = classnames('player', {
-    'player--black': player.color === Colour.Black,
-    'player--blue': player.color === Colour.Blue,
-    'player--brown': player.color === Colour.Brown,
-    'player--cyan': player.color === Colour.Cyan,
-    'player--green': player.color === Colour.Green,
-    'player--lime': player.color === Colour.Lime,
-    'player--orange': player.color === Colour.Orange,
-    'player--pink': player.color === Colour.Pink,
-    'player--purple': player.color === Colour.Purple,
-    'player--red': player.color === Colour.Red,
-    'player--white': player.color === Colour.White,
-    'player--yellow': player.color === Colour.Yellow,
+    'player--black': player.colour === Colour.Black,
+    'player--blue': player.colour === Colour.Blue,
+    'player--brown': player.colour === Colour.Brown,
+    'player--cyan': player.colour === Colour.Cyan,
+    'player--green': player.colour === Colour.Green,
+    'player--lime': player.colour === Colour.Lime,
+    'player--orange': player.colour === Colour.Orange,
+    'player--pink': player.colour === Colour.Pink,
+    'player--purple': player.colour === Colour.Purple,
+    'player--red': player.colour === Colour.Red,
+    'player--white': player.colour === Colour.White,
+    'player--yellow': player.colour === Colour.Yellow,
   });
 
   return (
     <div className={playerClassName}>
-      {getCharacterImage(player.color)}
+      {getCharacterImage(player.colour)}
 
       <span className='player__name'>{player.name}</span>
 

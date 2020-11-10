@@ -4,7 +4,7 @@ import Colour from "../enums/Colour";
 interface IPlayer {
     readonly name: string;
     readonly position: Position;
-    readonly color: Colour;
+    readonly colour: Colour;
 }
 
 export default IPlayer;

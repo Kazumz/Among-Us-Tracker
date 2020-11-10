@@ -29,8 +29,8 @@ const Section: React.FC<ISectionProps> = ({
       <li className='section__player-list-item'>
         <Player
           player={x}
-          prevCallback={() => dispatch(actionCreators.setPlayerPosition(x.name, getPreviousPosition(x.position)))}
-          nextCallback={() => dispatch(actionCreators.setPlayerPosition(x.name, getNextPosition(x.position)))}
+          prevCallback={() => dispatch(actionCreators.setPlayerPosition(x.colour, getPreviousPosition(x.position)))}
+          nextCallback={() => dispatch(actionCreators.setPlayerPosition(x.colour, getNextPosition(x.position)))}
         />
       </li>
     ) : [],

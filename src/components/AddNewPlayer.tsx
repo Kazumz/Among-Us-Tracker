@@ -26,19 +26,14 @@ const AddNewPlayer: React.FC = () => {
 
     const onColourChange = React.useCallback(
         (e: React.ChangeEvent<HTMLSelectElement>) => {
-            const colour: Colour = parseInt(e.target.value, 10);
+            const colour: Colour = e.target.value as Colour;
             setColour(colour);
         },
         [],
     );
 
     const addPlayer = React.useCallback(() => {
-        if (allPlayers.some(x => x.name === name)) {
-            setErrorMessage(i18next.t('addNewPlayer.playerAlreadyExists'));
-            return;
-        }
-
-        if (allPlayers.some(x => x.color === colour)) {
+        if (allPlayers.some(x => x.colour === colour)) {
             setErrorMessage(i18next.t('addNewPlayer.colourAlreadyExists'));
             return;
         }
@@ -58,15 +53,25 @@ const AddNewPlayer: React.FC = () => {
             name,
             colour,
             allPlayers,
-        ]);
+        ]
+    );
 
-    const addDisabled = name === '' || name === undefined || colour === Colour.Unknown;
+    const addAllPlayers = React.useCallback(
+        () => {
+            dispatch(actionCreators.addAllPlayers());
+        },
+        [
+            dispatch
+        ]
+    );
+
+    const addDisabled = colour === Colour.Unknown;
     return (
         <div className='add-new-player'>
             <h2>{i18next.t('addNewPlayer.title')}</h2>
 
             <input
-                style={{minWidth: '0'}}
+                style={{ minWidth: '0' }}
                 name={'PlayerName'}
                 placeholder={i18next.t('addNewPlayer.playerNameField.placeholder')}
                 value={name}
@@ -79,20 +84,20 @@ const AddNewPlayer: React.FC = () => {
             <ComboBox
                 onChange={onColourChange}
                 value={colour}
-                options={new Map<number, string>([
-                    [Colour.Unknown, i18next.t('addNewPlayer.playerColourSelect.unknown')],
-                    [Colour.Black, i18next.t('addNewPlayer.playerColourSelect.black')],
-                    [Colour.Blue, i18next.t('addNewPlayer.playerColourSelect.blue')],
-                    [Colour.Brown, i18next.t('addNewPlayer.playerColourSelect.brown')],
-                    [Colour.Cyan, i18next.t('addNewPlayer.playerColourSelect.cyan')],
-                    [Colour.Green, i18next.t('addNewPlayer.playerColourSelect.green')],
-                    [Colour.Lime, i18next.t('addNewPlayer.playerColourSelect.lime')],
-                    [Colour.Orange, i18next.t('addNewPlayer.playerColourSelect.orange')],
-                    [Colour.Pink, i18next.t('addNewPlayer.playerColourSelect.pink')],
-                    [Colour.Purple, i18next.t('addNewPlayer.playerColourSelect.purple')],
-                    [Colour.Red, i18next.t('addNewPlayer.playerColourSelect.red')],
-                    [Colour.White, i18next.t('addNewPlayer.playerColourSelect.white')],
-                    [Colour.Yellow, i18next.t('addNewPlayer.playerColourSelect.yellow')]
+                options={new Map<string, string>([
+                    [Colour.Unknown, i18next.t('playerColour.unknown')],
+                    [Colour.Black, i18next.t('playerColour.black')],
+                    [Colour.Blue, i18next.t('playerColour.blue')],
+                    [Colour.Brown, i18next.t('playerColour.brown')],
+                    [Colour.Cyan, i18next.t('playerColour.cyan')],
+                    [Colour.Green, i18next.t('playerColour.green')],
+                    [Colour.Lime, i18next.t('playerColour.lime')],
+                    [Colour.Orange, i18next.t('playerColour.orange')],
+                    [Colour.Pink, i18next.t('playerColour.pink')],
+                    [Colour.Purple, i18next.t('playerColour.purple')],
+                    [Colour.Red, i18next.t('playerColour.red')],
+                    [Colour.White, i18next.t('playerColour.white')],
+                    [Colour.Yellow, i18next.t('playerColour.yellow')]
                 ])}
             />
 
@@ -100,6 +105,11 @@ const AddNewPlayer: React.FC = () => {
                 disabled={addDisabled}
                 onClick={addPlayer}
                 content={i18next.t('addNewPlayer.add')}
+            />
+
+            <Button
+                onClick={addAllPlayers}
+                content={i18next.t('addNewPlayer.addAll')}
             />
 
             {errorMessage !== undefined &&
