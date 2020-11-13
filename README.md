@@ -4,6 +4,9 @@
 - [Preview current build](https://www.amongustracker.com/)
 - [![Netlify Status](https://api.netlify.com/api/v1/badges/1d42fb68-3529-4166-b987-f8d4bcf881cd/deploy-status)](https://app.netlify.com/sites/dreamy-fermat-5bfb01/deploys)
 
+## Additional Contributors
+- Matt Cassell - Thank you for styling the fields, improving the overall CSS, and consulting on accessibility! Much appreciated.
+
 ## Upcoming Features
 <ul>
     <li>
