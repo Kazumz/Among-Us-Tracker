@@ -1,0 +1,36 @@
+%truncated-text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+%input {
+    background-color: $InputBackgroundBrush;
+    color: $FontBrush;
+    border: unset;
+    padding: 0 1em;
+    font-size: 1em;
+    border-bottom: 2px solid darken($FontBrush, 20%);
+    height: 3em;
+    min-width: 0;
+}
+
+%focus-style {
+    &:focus { 
+        outline: 3px solid $LightFocusBrush; 
+        outline-offset: -3px;
+    }
+    
+    &:focus:not(:focus-visible) {
+      /* Undo all the above focused button styles
+         if the button has focus but the browser wouldn't normally
+         show default focus styles */
+         outline: unset;
+         outline-offset: unset;
+    }
+    
+    &:focus-visible { 
+        outline: 3px solid $LightFocusBrush; 
+        outline-offset: -3px;
+    }
+}

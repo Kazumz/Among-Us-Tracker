@@ -1,0 +1,76 @@
+* {
+    user-select: none;
+}
+
+html {
+    color: $FontBrush;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: $LinkBrush;
+
+    &:active, &:hover {
+      color: $LinkActiveBrush;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    display: block;
+    font-weight: bold;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+}
+
+h3 {
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+}
+
+
+select, input {
+    @extend %input;
+}
+
+select, input, button {
+    @extend %focus-style;
+}
+
+input {
+    &::placeholder {
+        color: $LayoutBackgroundBrushContrast;
+        font-style: italic;
+    }
+}

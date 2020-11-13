@@ -1,6 +1,6 @@
 .add-new-player {
     display: grid;
-    grid-auto-rows: 3rem;
+    grid-auto-rows: auto;
     gap: 1rem;
 
     & > .add-new-player__error {

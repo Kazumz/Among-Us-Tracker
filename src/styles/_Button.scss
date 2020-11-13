@@ -1,11 +1,35 @@
 .button {
-    display: flex;
+    $overlay-colour: #00000025;
+    @extend %truncated-text;
+
+    outline: unset;
+    border: unset;
     align-items: center;
     justify-content: center;
-    
+    border-radius: $standard-border-radius;
+    border: 1px solid darken($FontBrush, 20%);
+    color: $FontBrush;
+    background-color: $ButtonBrush;
+    font-weight: bold;
+    box-shadow: inset 0px -15px 20px 0px $overlay-colour;
+    font-size: 1em;
+    height: 3em;
     cursor: pointer;
 
-    &.button--disabled {
-        cursor: not-allowed
+    &:disabled {
+        color: $LayoutBackgroundBrushContrast;
+        border: 1px solid darken($LayoutBackgroundBrushContrast, 20%);
+        background-color: $InputBackgroundBrush;
+        box-shadow: unset;
+        font-weight: normal;
+        cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+        background-color: darken($ButtonBrush, 5%);
+    }
+
+    &:active {
+        box-shadow: inset 0px 15px 20px 0px $overlay-colour;
     }
 }

@@ -42,7 +42,7 @@ const Section: React.FC<ISectionProps> = ({
 
   return (
     <div className="section">
-      <h3>{title}</h3>
+      <h2>{title}</h2>
 
       <span className='section__row'>
         {icon !== undefined &&

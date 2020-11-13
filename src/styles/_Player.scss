@@ -68,9 +68,7 @@
     }
 
     & > .player__name {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        @extend %truncated-text;
         color: $PlayerBrush;
         font-weight: bold;
     }
@@ -79,21 +77,39 @@
         display: grid;
         gap: 0.5rem;
 
-        & > .player__nav-previous {
-            background: none;
-            border: none;
-        
-            & > .player__nav-previous-icon {
-                width: 16px;
-                height: 16px;
-            }
-        }
+        & > .player__nav-button {
+            // TODO: style states
 
-        & > .player__nav-next {
-            background: none;
-            border: none;
-        
-            & > .player__nav-next-icon {
+            all: unset;
+
+            &:disabled {
+                all: unset;
+            }
+
+            &:hover {
+                all: unset;
+            }
+
+            // TODO: make focus a mixin
+            &:focus { 
+                outline: 3px solid $DarkFocusBrush; 
+                outline-offset: 3px;
+            }
+
+            &:focus:not(:focus-visible) {
+              /* Undo all the above focused button styles
+                 if the button has focus but the browser wouldn't normally
+                 show default focus styles */
+                 outline: unset;
+                 outline-offset: unset;
+            }
+            
+            &:focus-visible { 
+                outline: 3px solid $DarkFocusBrush; 
+                outline-offset: 3px;
+            }
+    
+            & > .player__nav-button-icon {
                 width: 16px;
                 height: 16px;
             }

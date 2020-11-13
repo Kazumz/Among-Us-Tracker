@@ -28,6 +28,7 @@
     & > .app__information {
       display: none;
       text-align: center;
+      margin: 1em;
 
       @media only screen and (max-width: $tablet-breakpoint) {
         display: initial;
@@ -36,7 +37,7 @@
 
     & > .app__body {
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 2fr 1fr;
       overflow-y: auto;
       overflow-x: hidden;
       padding: 2.5rem;

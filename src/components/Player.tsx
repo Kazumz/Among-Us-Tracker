@@ -54,11 +54,11 @@ const Player: React.FC<IPlayerProps> = ({
 
       <span className='player__nav'>
         <Button
-          className='player__nav-previous'
+          className='player__nav-button player__nav-previous'
           onClick={prevCallback}
           content={
             <img
-              className='player__nav-previous-icon'
+              className='player__nav-button-icon'
               src={UpArrow}
               alt={i18next.t('player.up')}
             />
@@ -67,11 +67,11 @@ const Player: React.FC<IPlayerProps> = ({
         />
 
         <Button
-          className='player__nav-next'
+          className='player__nav-button player__nav-next'
           onClick={nextCallback}
           content={
             <img
-              className='player__nav-next-icon'
+              className='player__nav-button-icon'
               src={DownArrow}
               alt={i18next.t('player.down')}
             />

@@ -14,9 +14,7 @@ const Button: React.FC<IButtonProps> = ({
     onClick,
     content,
 }) => {
-    const buttonClassName = classnames('button', className, {
-        'button--disabled': disabled === true
-    });
+    const buttonClassName = classnames('button', className);
     
     return (
         <button
