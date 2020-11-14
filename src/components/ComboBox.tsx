@@ -1,9 +1,15 @@
 import React from 'react';
 
+export interface IComboBoxOption {
+    label: string;
+    disabled?: boolean;
+    disabledLabel?: string;
+}
+
 interface IComboBoxProps {
     onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
     value: string | number;
-    options: ReadonlyMap<string | number, string>;
+    options: ReadonlyMap<string | number, IComboBoxOption>;
 }
 
 const ComboBox: React.FC<IComboBoxProps> = ({
@@ -28,15 +34,19 @@ const ComboBox: React.FC<IComboBoxProps> = ({
     );
 };
 
-function renderOptions(options: ReadonlyMap<string | number, string>): ReadonlyArray<JSX.Element> {
+function renderOptions(options: ReadonlyMap<string | number, IComboBoxOption>): ReadonlyArray<JSX.Element> {
     const elements: Array<JSX.Element> = [];
-    options.forEach((value: string, key: string | number) => {
+    options.forEach((value: IComboBoxOption, key: string | number) => {
+
+        const label = value.disabled === true && value.disabledLabel ? value.disabledLabel : value.label;
+
         elements.push(
             <option
                 key={key}
                 value={key}
+                disabled={value.disabled}
             >
-                {value}
+                {label}
             </option>,
         );
     });

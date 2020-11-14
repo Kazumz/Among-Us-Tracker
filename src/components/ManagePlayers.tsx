@@ -3,7 +3,7 @@ import i18next from 'i18next';
 import { useDispatch } from 'react-redux';
 
 import { GetAllPlayers } from '../store/bundles/player-selectors';
-import ComboBox from './ComboBox';
+import ComboBox, { IComboBoxOption } from './ComboBox';
 import Button from './Button';
 import { actionCreators } from '../store/bundles/player-bundle';
 import Colour from '../enums/Colour';
@@ -38,14 +38,16 @@ const ManagePlayers: React.FC = () => {
 
     const mappedPlayers = React.useMemo(
         () => {
-            const map = new Map<number, string>();
+            const map = new Map<number, IComboBoxOption>();
             allPlayers.forEach((player, index) =>
-                map.set(index, `${getPlayerColourText(player.colour)} ${player.name !== undefined && player.name !== '' ? `(${player.name})` : ``}`)
+                map.set(index, { label: `${getPlayerColourText(player.colour)} ${player.name !== undefined && player.name !== '' ? `(${player.name})` : ``}`})
             );
 
             if (map.size === 0) {
-                map.set(0, i18next.t('managePlayers.selectPlaceholder'));
+                map.set(0, { label: i18next.t('managePlayers.selectPlaceholder')});
             }
+
+            console.log(`*** ${allPlayers.length}`, map);
 
             return map;
         },
