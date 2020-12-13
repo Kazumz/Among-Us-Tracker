@@ -7,13 +7,19 @@
 ## Additional Contributors
 - Matt Cassell - Thank you for styling the fields, improving the overall CSS, and consulting on accessibility! Much appreciated.
 
-## Upcoming Features
+## Ideal Features
 <ul>
     <li>
       Drag and drop between sections
     </li>
     <li>
       Creating sessions for people to view. One owner, many viewers.
+    </li>
+    <li>
+      Clean up UI, potentially introduce pages and routes.
+    </li>
+    <li>
+      Avoid enabling buttons that may cause validation errors, such as adding the same colour twice or pressing return in the name field should add the player.
     </li>
 </ul>
 
