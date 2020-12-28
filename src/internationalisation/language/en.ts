@@ -34,7 +34,8 @@ export default {
     },
     'savePlayers': {
         'title': 'Save Players',
-        'save': 'Save'
+        'save': 'Save',
+        'generalError': 'Oops, that didn\'t work. Please try again',
     },
     'addNewPlayer': {
         'title': 'Add New Player',

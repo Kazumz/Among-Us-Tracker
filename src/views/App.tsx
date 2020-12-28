@@ -9,6 +9,8 @@ import {
 } from '../utilities/position-utilities';
 import Position from '../enums/Position';
 import Management from '../components/Management';
+import LoadingSpinner from '../components/LoadingSpinner';
+import { loadSession } from '../models/session-model';
 
 const App: React.FC = () => {
   const sections: ReadonlyArray<React.FunctionComponent> = React.useMemo(
@@ -24,6 +26,8 @@ const App: React.FC = () => {
     },
     []
   );
+
+  React.useEffect(() => loadSession(), []);
 
   return (
     <div className="app">
@@ -45,7 +49,13 @@ const App: React.FC = () => {
 
         <main className="app__body">
           <div className='app-body__sections'>
-            {sections.map(Section => <Section />)}
+            <LoadingSpinner
+              covering={() => (
+                <React.Fragment>
+                  {sections.map(Section => <Section />)}
+                </React.Fragment>
+              )}
+            />
           </div>
 
           <Management />

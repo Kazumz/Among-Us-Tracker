@@ -4,9 +4,12 @@ import i18next from 'i18next';
 import Button from './Button';
 import { saveSession } from '../models/session-model';
 import { GetAllPlayers } from '../store/bundles/player-selectors';
+import { GetError } from '../store/bundles/session-selectors';
 
 const SavePlayers: React.FC = () => {
     const allPlayers = GetAllPlayers();
+    const error = GetError();
+    
     const saveSessionCallback = React.useCallback(() => saveSession(allPlayers), [allPlayers]);
 
     return (
@@ -17,6 +20,12 @@ const SavePlayers: React.FC = () => {
                 onClick={saveSessionCallback}
                 content={i18next.t('savePlayers.save')}
             />
+
+            {error === true &&
+                <p className='save-players__error' role='alert'>
+                    {i18next.t('savePlayers.generalError')}
+                </p>
+            }
         </div>
     );
 }

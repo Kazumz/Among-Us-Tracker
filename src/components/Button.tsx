@@ -1,6 +1,8 @@
 import React from 'react';
 import classnames from 'classnames';
 
+import { GetLoading } from '../store/bundles/application-selectors';
+
 interface IButtonProps {
     className?: string;
     disabled?: boolean;
@@ -14,12 +16,14 @@ const Button: React.FC<IButtonProps> = ({
     onClick,
     content,
 }) => {
+    const loading = GetLoading();
+    
     const buttonClassName = classnames('button', className);
     
     return (
         <button
             className={buttonClassName}
-            disabled={disabled}
+            disabled={disabled || loading}
             aria-disabled={disabled}
             onClick={onClick}
         >

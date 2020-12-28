@@ -5,6 +5,7 @@ import { MAX_CHARACTER_NAME } from '../../constants/player-constants';
 
 enum ActionTypes {
     CREATE_PLAYER = 'PLAYER_BUNDLE_CREATE_PLAYER',
+    RESTORE_PLAYERS = 'PLAYER_BUNDLE_RESTORE_PLAYERS',
     SET_PLAYER_POSITION = 'PLAYER_BUNDLE_SET_PLAYER_ACTION',
     DELETE_PLAYER = 'PLAYER_BUNDLE_DELETE_PLAYER',
     RESET_ALL_PLAYERS = 'PLAYER_BUNDLE_RESET_ALL_PLAYERS',
@@ -19,6 +20,11 @@ interface ICreatePlayerAction {
 
 interface IResetAllPlayersAction {
     type: ActionTypes.RESET_ALL_PLAYERS;
+}
+
+interface IRestorePlayersAction {
+    type: ActionTypes.RESTORE_PLAYERS;
+    players: ReadonlyArray<IPlayer>;
 }
 
 interface IAddAllPlayersAction {
@@ -41,7 +47,8 @@ type Action = ICreatePlayerAction |
     ISetPlayerPositionAction |
     IDeletePlayerAction |
     IResetAllPlayersAction |
-    IAddAllPlayersAction;
+    IAddAllPlayersAction |
+    IRestorePlayersAction;
 
 // State Slice Definition
 export interface IPlayerState {
@@ -79,6 +86,12 @@ export const actionCreators = {
         return {
             type: ActionTypes.ADD_ALL_PLAYERS
         }
+    },
+    restorePlayers(players: ReadonlyArray<IPlayer>): IRestorePlayersAction {
+        return {
+            type: ActionTypes.RESTORE_PLAYERS,
+            players: players
+        }
     }
 }
 
@@ -99,6 +112,13 @@ function createPlayerAction(state: IPlayerState, action: ICreatePlayerAction): I
     }
 
     return state;
+}
+
+function restorePlayersAction(state: IPlayerState, action: IRestorePlayersAction): IPlayerState {
+    return {
+        ...state,
+        players: action.players
+    };
 }
 
 function resetAllPlayersAction(state: IPlayerState, action: IResetAllPlayersAction): IPlayerState {
@@ -195,6 +215,8 @@ export default function reducer(state: IPlayerState = getDefault(), action: Acti
             return resetAllPlayersAction(state, action);
         case ActionTypes.ADD_ALL_PLAYERS:
             return addAllPlayersAction(state, action);
+        case ActionTypes.RESTORE_PLAYERS:
+            return restorePlayersAction(state, action);
         default:
             return state;
     }
