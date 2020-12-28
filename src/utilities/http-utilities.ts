@@ -15,7 +15,6 @@ async function performFetch(url: string, method: Method, data?: DataType): Promi
         const response: Response = await fetch(url, {
             method: method,
             body: data !== null && data !== undefined ? JSON.stringify(data) : undefined,
-            mode: 'no-cors',
             cache: 'no-cache',
             headers: {
                 'Content-Type': 'application/json',

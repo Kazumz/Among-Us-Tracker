@@ -1,12 +1,16 @@
 import { createUpdateSession } from "../data-services/session-data-service";
 import IPlayer from "../interfaces/player";
+import {
+    addSessionIdToUrl,
+    getSessionIdFromUrl
+} from "../utilities/url-utilities";
 
 export function saveSession(allPlayers: ReadonlyArray<IPlayer>): void {
     // Set Loading
 
-    createUpdateSession(undefined, allPlayers)
+    createUpdateSession(getSessionIdFromUrl(), allPlayers)
         .then(sessionId => {
-            console.log(`saveSession.sessionId: ${sessionId}`);
+            addSessionIdToUrl(sessionId);
 
             // Set Loading
         })
