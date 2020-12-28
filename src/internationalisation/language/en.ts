@@ -32,6 +32,10 @@ export default {
         'removePlayer': 'Remove',
         'resetAllPlayers': 'Reset All'
     },
+    'savePlayers': {
+        'title': 'Save Players',
+        'save': 'Save'
+    },
     'addNewPlayer': {
         'title': 'Add New Player',
         'colourAlreadyExists': 'Colour already exists',
