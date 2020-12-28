@@ -1,3 +1,5 @@
+import i18next from 'i18next';
+
 import {
     createUpdateSession,
     getSession
@@ -21,6 +23,8 @@ export function saveSession(allPlayers: ReadonlyArray<IPlayer>): void {
             addSessionIdToUrl(sessionId);
 
             dispatch(applicationActionCreators.setLoading(false));
+
+            alert(i18next.t('savePlayers.alert'))
         })
         .catch(e => {
             dispatch(applicationActionCreators.setLoading(false));

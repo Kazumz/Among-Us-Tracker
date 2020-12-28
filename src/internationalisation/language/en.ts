@@ -36,6 +36,7 @@ export default {
         'title': 'Save Players',
         'save': 'Save',
         'generalError': 'Oops, that didn\'t work. Please try again',
+        'alert': 'Your session has been saved. Please bookmark or copy the URL for this page.',
     },
     'addNewPlayer': {
         'title': 'Add New Player',

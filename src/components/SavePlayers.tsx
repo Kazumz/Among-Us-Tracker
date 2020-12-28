@@ -19,6 +19,7 @@ const SavePlayers: React.FC = () => {
             <Button
                 onClick={saveSessionCallback}
                 content={i18next.t('savePlayers.save')}
+                disabled={allPlayers.length === 0}
             />
 
             {error === true &&
