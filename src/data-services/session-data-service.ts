@@ -13,7 +13,7 @@ import {
     post
 } from "../utilities/http-utilities";
 
-const SESSION_URL: string = 'https://kp-global-apim.azure-api.net/';
+const SESSION_URL: string = 'https://kp-cons-apim.azure-api.net/';
 
 export async function createUpdateSession(
     sessionId: string | undefined,
