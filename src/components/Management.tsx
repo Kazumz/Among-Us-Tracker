@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 import AddNewPlayer from './AddNewPlayer';
 import ManagePlayers from './ManagePlayers';
-import SavePlayers from './SavePlayers';
+// import SavePlayers from './SavePlayers';
 
 interface IManagementProps {
     className?: string;

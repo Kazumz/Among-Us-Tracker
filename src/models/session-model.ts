@@ -2,12 +2,12 @@ import i18next from 'i18next';
 
 import {
     createUpdateSession,
-    getSession
+    // getSession
 } from "../data-services/session-data-service";
 import IPlayer from "../interfaces/player";
 import { actionCreators as applicationActionCreators } from "../store/bundles/application-bundle";
 import { actionCreators as sessionActionCreators } from "../store/bundles/session-bundle";
-import { actionCreators as playerActionCreators } from "../store/bundles/player-bundle";
+// import { actionCreators as playerActionCreators } from "../store/bundles/player-bundle";
 import dispatch from "../store/dispatch";
 import {
     addSessionIdToUrl,
