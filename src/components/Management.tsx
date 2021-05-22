@@ -18,8 +18,6 @@ const Management: React.FC<IManagementProps> = ({
             <AddNewPlayer />
 
             <ManagePlayers />
-
-            <SavePlayers />
         </div>
     );
 }

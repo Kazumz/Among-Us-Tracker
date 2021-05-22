@@ -36,15 +36,15 @@ export function loadSession(): void {
     const sessionId = getSessionIdFromUrl()
 
     if (sessionId !== null && sessionId !== undefined) {
-        dispatch(applicationActionCreators.setLoading(true));
-
-        getSession(sessionId)
-            .then(players => {
-                dispatch(playerActionCreators.restorePlayers(players));
-                dispatch(applicationActionCreators.setLoading(false));
-            })
-            .catch(e => {
-                dispatch(applicationActionCreators.setLoading(false));
-            });
+        // dispatch(applicationActionCreators.setLoading(true));
+        //
+        // getSession(sessionId)
+        //     .then(players => {
+        //         dispatch(playerActionCreators.restorePlayers(players));
+        //         dispatch(applicationActionCreators.setLoading(false));
+        //     })
+        //     .catch(e => {
+        //         dispatch(applicationActionCreators.setLoading(false));
+        //     });
     }
 }
