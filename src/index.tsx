@@ -8,7 +8,9 @@ import App from './views/App';
 import * as serviceWorker from './serviceWorker';
 import store from './store/store';
 import initialise from "./internationalisation/i18n";
+import setupHotjar from './telemetry/hotjar';
 
+setupHotjar();
 initialise();
 
 ReactDOM.render(
