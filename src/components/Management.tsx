@@ -3,6 +3,7 @@ import classnames from 'classnames';
 
 import AddNewPlayer from './AddNewPlayer';
 import ManagePlayers from './ManagePlayers';
+import SavePlayers from './SavePlayers';
 // import SavePlayers from './SavePlayers';
 
 interface IManagementProps {
@@ -18,6 +19,8 @@ const Management: React.FC<IManagementProps> = ({
             <AddNewPlayer />
 
             <ManagePlayers />
+            
+            <SavePlayers />
         </div>
     );
 }
