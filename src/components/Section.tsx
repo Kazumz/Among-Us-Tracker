@@ -4,57 +4,70 @@ import { useDispatch } from 'react-redux';
 import IPlayer from '../interfaces/player';
 import { actionCreators } from '../store/bundles/player-bundle';
 import {
-  getNextPosition,
-  getPreviousPosition
+    getNextPosition,
+    getPreviousPosition
 } from '../utilities/position-utilities';
 import Player from './Player';
+import { useDrop } from 'react-dnd';
+import Position from '../enums/Position';
+import Colour from '../enums/Colour';
 
 interface ISectionProps {
-  title: string;
-  players?: ReadonlyArray<IPlayer>;
-  icon?: string;
-  iconAlt?: string;
+    title: string;
+    position: Position;
+    players?: ReadonlyArray<IPlayer>;
+    icon?: string;
+    iconAlt?: string;
 }
 
 const Section: React.FC<ISectionProps> = ({
-  title,
-  players,
-  icon,
-  iconAlt,
+    title,
+    players,
+    icon,
+    iconAlt,
+    position,
 }) => {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-  const playerElements = React.useMemo(
-    () => players !== undefined ? players.map(x =>
-      <li className='section__player-list-item'>
-        <Player
-          player={x}
-          prevCallback={() => dispatch(actionCreators.setPlayerPosition(x.colour, getPreviousPosition(x.position)))}
-          nextCallback={() => dispatch(actionCreators.setPlayerPosition(x.colour, getNextPosition(x.position)))}
-        />
-      </li>
-    ) : [],
-    [
-      players,
-      dispatch
-    ]
-  );
+    const [collectedProps, drop] = useDrop({
+        accept: "Player",
+        drop: function (item, monitor) {
+            const dragItem = item as  {type: string, colour: Colour};
+            dispatch(actionCreators.setPlayerPosition(dragItem.colour, position))
+        }
+    });
 
-  return (
-    <div className="section">
-      <h2>{title}</h2>
+    const playerElements = React.useMemo(
+        () => players !== undefined ? players.map(x =>
+            <li className='section__player-list-item'>
+                <Player
+                    player={x}
+                    prevCallback={() => dispatch(actionCreators.setPlayerPosition(x.colour, getPreviousPosition(x.position)))}
+                    nextCallback={() => dispatch(actionCreators.setPlayerPosition(x.colour, getNextPosition(x.position)))}
+                />
+            </li>
+        ) : [],
+        [
+            players,
+            dispatch
+        ]
+    );
 
-      <span className='section__row'>
+    return (
+        <div ref={drop} className="section">
+            <h2>{title}</h2>
+
+            <span className='section__row'>
         {icon !== undefined &&
-          <img className='section__row-icon' src={icon} alt={iconAlt} />
+            <img className='section__row-icon' src={icon} alt={iconAlt}/>
         }
 
-        <ul className='section__player-list'>
+                <ul className='section__player-list'>
           {playerElements}
         </ul>
       </span>
-    </div>
-  );
+        </div>
+    );
 }
 
 export default Section;

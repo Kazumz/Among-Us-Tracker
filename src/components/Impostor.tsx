@@ -4,6 +4,7 @@ import i18next from 'i18next';
 import Section from './Section';
 import { GetImpostorPlayers } from '../store/bundles/player-selectors';
 import ImpostorImage from '../assets/impostor.svg';
+import Position from '../enums/Position';
 
 const Impostor: React.FC = () => {
     const players = GetImpostorPlayers();
@@ -11,6 +12,7 @@ const Impostor: React.FC = () => {
     return (
         <div className="impostor">
             <Section
+                position={Position.Impostor}
                 title={i18next.t('impostor.title')}
                 players={players}
                 icon={ImpostorImage}

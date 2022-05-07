@@ -9,17 +9,21 @@ import * as serviceWorker from './serviceWorker';
 import store from './store/store';
 import initialise from "./internationalisation/i18n";
 import setupHotjar from './telemetry/hotjar';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 setupHotjar();
 initialise();
 
 ReactDOM.render(
-  <Provider store={store}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </Provider>,
-  document.getElementById('root')
+    <Provider store={store}>
+        <DndProvider backend={HTML5Backend}>
+            <React.StrictMode>
+                <App/>
+            </React.StrictMode>
+        </DndProvider>
+    </Provider>,
+    document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

@@ -19,6 +19,9 @@ import Brown from '../assets/brown_character.png'
 import UpArrow from '../assets/up-arrow-triangle.svg';
 import DownArrow from '../assets/down-arrow-triangle.svg';
 import Button from './Button';
+import {
+  useDrag
+} from 'react-dnd';
 
 interface IPlayerProps {
   player: IPlayer;
@@ -31,6 +34,10 @@ const Player: React.FC<IPlayerProps> = ({
   nextCallback,
   prevCallback,
 }) => {
+  const [collected, drag, dragPreview] = useDrag({
+    item: { type: 'Player', colour: player.colour }
+  })
+  
   const playerClassName: string = classnames('player', {
     'player--black': player.colour === Colour.Black,
     'player--blue': player.colour === Colour.Blue,
@@ -47,7 +54,7 @@ const Player: React.FC<IPlayerProps> = ({
   });
 
   return (
-    <div className={playerClassName}>
+    <div ref={drag} className={playerClassName}>
       {getCharacterImage(player.colour)}
 
       <span className='player__name'>{player.name}</span>
