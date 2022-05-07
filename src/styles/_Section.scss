@@ -1,5 +1,13 @@
 .section {
     min-height: 5rem;
+    
+    &.section--drop-zone {
+        & > .section__row {
+            & > .section__player-list {
+                background-color: lighten($SectionBackgroundBrush, 10%);
+            }
+        }
+    }
 
     & > .section__row {
         display: grid;

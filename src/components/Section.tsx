@@ -11,6 +11,7 @@ import Player from './Player';
 import { useDrop } from 'react-dnd';
 import Position from '../enums/Position';
 import Colour from '../enums/Colour';
+import classnames from 'classnames';
 
 interface ISectionProps {
     title: string;
@@ -29,12 +30,15 @@ const Section: React.FC<ISectionProps> = ({
 }) => {
     const dispatch = useDispatch();
 
-    const [collectedProps, drop] = useDrop({
+    const [{isOver}, drop] = useDrop({
         accept: "Player",
-        drop: function (item, monitor) {
+        drop: (item, monitor) => {
             const dragItem = item as  {type: string, colour: Colour};
             dispatch(actionCreators.setPlayerPosition(dragItem.colour, position))
-        }
+        },
+        collect: (monitor) => ({
+            isOver: monitor.isOver(),
+        })
     });
 
     const playerElements = React.useMemo(
@@ -52,9 +56,13 @@ const Section: React.FC<ISectionProps> = ({
             dispatch
         ]
     );
+    
+    const sectionClassName: string = classnames('section', {
+        'section--drop-zone': isOver
+    });
 
     return (
-        <div ref={drop} className="section">
+        <div ref={drop} className={sectionClassName}>
             <h2>{title}</h2>
 
             <span className='section__row'>
