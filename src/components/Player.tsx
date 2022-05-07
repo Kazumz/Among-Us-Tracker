@@ -34,6 +34,7 @@ const Player: React.FC<IPlayerProps> = ({
   nextCallback,
   prevCallback,
 }) => {
+  // eslint-disable-next-line
   const [collected, drag, dragPreview] = useDrag({
     item: { type: 'Player', colour: player.colour }
   })
