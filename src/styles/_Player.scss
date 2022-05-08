@@ -7,10 +7,7 @@
     min-height: 3.5rem;
     border: 1.5px solid $PlayerBorderBrush;
     border-radius: $standard-border-radius;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    padding-top: 0.10rem;
-    padding-bottom: 0.10rem;
+    padding: 0.10rem 0.5rem;
     box-shadow: 0px 1px 30px 2px rgba(0,0,0,0.50);
     max-width: 15rem;
 
@@ -62,9 +59,33 @@
         background-color: #ffff00;
     }
 
+    &.player--banana {
+        background-color: #ffff80;
+    }
+
+    &.player--coral {
+        background-color: #ffe6eb;
+    }
+
+    &.player--grey {
+        background-color: #a6a6a6;
+    }
+
+    &.player--maroon {
+        background-color: #d65f5f;
+    }
+
+    &.player--rose {
+        background-color: #fff3f5;
+    }
+
+    &.player--tan {
+        background-color: #e0ccb1;
+    }
+
     & > .player__icon {
-        width: 2.5rem;
-        height: 2.5rem;
+        width: 2.25rem;
+        height: 2.75rem;
     }
 
     & > .player__name {

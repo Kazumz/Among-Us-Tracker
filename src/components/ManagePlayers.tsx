@@ -91,6 +91,12 @@ function getPlayerColourText(colour: Colour): string {
         case Colour.Red: return i18next.t('playerColour.red');
         case Colour.White: return i18next.t('playerColour.white');
         case Colour.Yellow: return i18next.t('playerColour.yellow');
+        case Colour.Banana: return i18next.t('playerColour.banana');
+        case Colour.Coral: return i18next.t('playerColour.coral');
+        case Colour.Grey: return i18next.t('playerColour.grey');
+        case Colour.Maroon: return i18next.t('playerColour.maroon');
+        case Colour.Rose: return i18next.t('playerColour.rose');
+        case Colour.Tan: return i18next.t('playerColour.tan');
 
         default:
             return '';

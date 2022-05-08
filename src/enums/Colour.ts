@@ -11,7 +11,13 @@ enum Colour {
     Purple = 'purple',
     Red = 'red',
     White = 'white',
-    Yellow = 'yellow'
+    Yellow = 'yellow',
+    Banana = 'banana',
+    Coral = 'coral',
+    Grey = 'grey',
+    Maroon = 'maroon',
+    Rose = 'rose',
+    Tan = 'tan',
 }
 
 export default Colour;

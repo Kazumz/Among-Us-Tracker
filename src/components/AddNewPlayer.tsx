@@ -33,21 +33,21 @@ const AddNewPlayer: React.FC = () => {
     );
 
     const addPlayer = React.useCallback(() => {
-        if (allPlayers.some(x => x.colour === colour)) {
-            setErrorMessage(i18next.t('addNewPlayer.colourAlreadyExists'));
-            return;
-        }
+            if (allPlayers.some(x => x.colour === colour)) {
+                setErrorMessage(i18next.t('addNewPlayer.colourAlreadyExists'));
+                return;
+            }
 
-        if (name.length > MAX_CHARACTER_NAME) {
-            setErrorMessage(i18next.t('addNewPlayer.nameLength'));
-            return;
-        }
+            if (name.length > MAX_CHARACTER_NAME) {
+                setErrorMessage(i18next.t('addNewPlayer.nameLength'));
+                return;
+            }
 
-        setErrorMessage(undefined);
-        setColour(Colour.Unknown);
-        setName('');
-        dispatch(actionCreators.createPlayer(name, colour));
-    },
+            setErrorMessage(undefined);
+            setColour(Colour.Unknown);
+            setName('');
+            dispatch(actionCreators.createPlayer(name, colour));
+        },
         [
             dispatch,
             name,
@@ -97,7 +97,13 @@ const AddNewPlayer: React.FC = () => {
                     [Colour.Purple, i18next.t('playerColour.purple')],
                     [Colour.Red, i18next.t('playerColour.red')],
                     [Colour.White, i18next.t('playerColour.white')],
-                    [Colour.Yellow, i18next.t('playerColour.yellow')]
+                    [Colour.Yellow, i18next.t('playerColour.yellow')],
+                    [Colour.Banana, i18next.t('playerColour.banana')],
+                    [Colour.Coral, i18next.t('playerColour.coral')],
+                    [Colour.Grey, i18next.t('playerColour.grey')],
+                    [Colour.Maroon, i18next.t('playerColour.maroon')],
+                    [Colour.Rose, i18next.t('playerColour.rose')],
+                    [Colour.Tan, i18next.t('playerColour.tan')],
                 ])}
             />
 

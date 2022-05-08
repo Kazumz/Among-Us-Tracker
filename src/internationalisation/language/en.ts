@@ -61,6 +61,12 @@ export default {
         'purple': 'Purple',
         'red': 'Red',
         'white': 'White',
-        'yellow': 'Yellow'
+        'yellow': 'Yellow',
+        'banana': 'Banana',
+        'coral': 'Coral',
+        'grey': 'Grey',
+        'maroon': 'Maroon',
+        'rose': 'Rose',
+        'tan': 'Tan'
     }
 }
