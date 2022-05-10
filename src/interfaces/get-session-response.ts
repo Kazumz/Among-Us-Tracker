@@ -62,6 +62,18 @@ function mapColour(colour: number): Colour {
             return Colour.White;
         case 12:
             return Colour.Yellow;
+        case 13:
+            return Colour.Banana;
+        case 14:
+            return Colour.Coral;
+        case 15:
+            return Colour.Grey;
+        case 16:
+            return Colour.Maroon;
+        case 17:
+            return Colour.Rose;
+        case 18:
+            return Colour.Tan;
 
         default:
             return Colour.Unknown;
