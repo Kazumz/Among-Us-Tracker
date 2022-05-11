@@ -2,7 +2,8 @@ export default {
     "app": {
         "title": "Among Us Tracker",
         "sourceCode": "Source Code",
-        "information": "Add new players below to start tracking. Move players between sections using the arrows."
+        "mobileInformation": "Add new players below to start tracking. Move players between sections using the arrows.",
+        "information": "Add new players below to start tracking. Move players between sections using drag and drop or the arrows."
     },
     "footer": {
         "createdBy": "Created by Kallum Parr | MIT Licence"
@@ -43,7 +44,7 @@ export default {
         'colourAlreadyExists': 'Colour already exists',
         'nameLength': 'Max name length is 10',
         'add': 'Add',
-        'addAll': 'Add All',
+        'addAll': 'Add All Colours',
         'playerNameField': {
             'placeholder': 'Player Name'
         },

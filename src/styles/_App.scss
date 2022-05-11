@@ -25,13 +25,22 @@
       }
     }
 
-    & > .app__information {
+    & > .app__mobile-information {
       display: none;
       text-align: center;
       margin: 1em;
 
       @media only screen and (max-width: $tablet-breakpoint) {
         display: initial;
+      }
+    }
+
+    & > .app__information {
+      text-align: center;
+      margin-bottom: 0.5rem;
+
+      @media only screen and (max-width: $tablet-breakpoint) {
+        display: none;
       }
     }
 

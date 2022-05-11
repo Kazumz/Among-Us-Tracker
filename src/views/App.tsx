@@ -45,7 +45,9 @@ const App: React.FC = () => {
           </a>
         </header>
 
-        <p className="app__information">{i18next.t('app.information')}</p>
+        <p className="app__mobile-information">{i18next.t('app.mobileInformation')}</p>
+
+          <p className="app__information">{i18next.t('app.information')}</p>
 
         <main className="app__body">
           <div className='app-body__sections'>
